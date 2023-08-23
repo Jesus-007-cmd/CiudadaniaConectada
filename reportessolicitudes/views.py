@@ -1,25 +1,29 @@
-from django.http import HttpResponse
-from django.views import View
 from django.shortcuts import render, redirect
+from django.views import View
+from .forms import ReporteForm
 
-from django.contrib import messages
-from django.contrib.auth import authenticate, login 
-from django.contrib.auth import logout
+from django.http import HttpResponse
 
-# Create your views here.
 def index(request):
-    return HttpResponse("Hola mundo")
 
-class Inicio(View):
-    template_name = 'inicio.html'
-    def post(self, request):
+    return HttpResponse("Hola Mundo")
 
-        return
+class AgregarReporte(View):
+    template_name = "agregar_reporte.html"
     
     def get(self, request):
-        '''
-        Esta es mi clase get
-        '''
-        print('Ya inicio mi GET -------*')
-
-        return render(request, self.template_name)
+        form = ReporteForm()
+        return render(request, self.template_name, {'form': form})
+    
+    def post(self, request):
+        form = ReporteForm(request.POST, request.FILES)
+        if form.is_valid():
+            print("Formulario válido")
+            print("Datos recibidos:", form.cleaned_data)
+            form.save()
+            print("Guardado exitoso")
+            return redirect('index')
+        else:
+            print("Formulario inválido")
+            print("Errores de validación:", form.errors)
+        return render(request, self.template_name, {'form': form})

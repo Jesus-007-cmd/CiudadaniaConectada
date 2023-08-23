@@ -1,0 +1,60 @@
+<!-- agregar_reporte.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            {{ form.titulo.label_tag }}
+            {{ form.titulo }}
+        </div>
+
+        <div class="form-group">
+            {{ form.descripcion.label_tag }}
+            {{ form.descripcion }}
+        </div>
+
+        <div class="form-group">
+            {{ form.categoria.label_tag }}
+            {{ form.categoria }}
+        </div>
+
+        <div class="form-group">
+            {{ form.direccion.label_tag }}
+            {{ form.direccion }}
+        </div>
+
+        <div class="form-group">
+            {{ form.imagen.label_tag }}
+            {{ form.imagen }}
+        </div>
+
+       
+
+        <button type="button" id="getLocationBtn" class="btn btn-primary">Obtener Latitud y Longitud</button>
+        <input type="text" id="latitud" name="latitud" class="form-control" placeholder="Latitud" readonly>
+        <input type="text" id="longitud" name="longitud" class="form-control" placeholder="Longitud" readonly>
+
+        <div class="form-group">
+            {{ form.archivo_adjunto.label_tag }}
+            {{ form.archivo_adjunto }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+
+<script>
+document.getElementById("getLocationBtn").addEventListener("click", function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        document.getElementById("latitud").value = latitude;
+        document.getElementById("longitud").value = longitude;
+    });
+});
+</script>
+{% endblock %}

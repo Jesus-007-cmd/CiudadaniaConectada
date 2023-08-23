@@ -13,12 +13,9 @@ class Open311ReporteProblema (models.Model):
     longitud = models.FloatField("Longitud", blank=True, null=True)
     fecha_creacion = models.DateTimeField("Fecha de Creación", auto_now_add=True)
     fecha_ultima_actualizacion = models.DateTimeField("Última Actualización", auto_now=True)
-    id_ciudadano = models.CharField('id Ciudadano', max_length=20, unique=True)  
+    id_ciudadano = models.CharField('id Ciudadano', max_length=20)  
     # Campo para una imagen principal
     imagen = models.ImageField("Imagen", upload_to='reportes_problemas/', blank=True, null=True)
-    
-    # Campo para múltiples imágenes adicionales
-    imagenes = models.ManyToManyField('ImagenReporte', related_name='reportes_problemas')
     archivo_adjunto = models.FileField("Archivo Adjunto", upload_to='archivos_reportes/', blank=True, null=True)
 
     def __str__(self):

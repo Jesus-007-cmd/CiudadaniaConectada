@@ -1,0 +1,88 @@
+{% extends "base.html" %} 
+{% block content %}
+{% load bootstrap4 %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+
+<head>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+   
+    <!-- Contenido -->
+    
+    <div align="center">
+        <div style="width: 70%;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            #
+                        </th>
+                        <th scope="col">
+                            Asunto
+                        </th>
+                        <th scope="col">
+                            Fecha de Creación
+                        </th>
+                        <th scope="col">
+                            Estado
+                        </th>
+                        <th scope="col">
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for solicitud in solicitudes %}
+                    <tr>
+                        <td scope="row">{{solicitud.pk}}</td>
+                        <td scope="row">{{solicitud.asunto}}</td>
+                        <td scope="row">{{solicitud.fecha_creacion}}</td>
+                        <td scope="row">{{solicitud.estado}}</td>
+                        <td>
+                            <form method="post" class="form-eliminar" id="form-eliminar" action="{% url 'eliminar_solicitud' solicitud.pk %}">
+                                {% csrf_token%}
+                                <input type="hidden" name="solicitud_id" value="{{ solicitud.pk }}">
+                                <button type="button" class="btn btn-danger" id="btn-confirmar-eliminar-{{ solicitud.pk }}" >Eliminar</button>
+                                <div class="dropdown" id="dropdown-confirmacion-{{ solicitud.pk }}" style="display: none;">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Confirmar Eliminación
+                                    </button>
+                                
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <button class="dropdown-item" type="submit">Si, Eliminar</button>
+                                    <button class="dropdown-item" type="button" id="btn-cancelar-eliminar-{{ solicitud.pk }}">Cancelar</button>
+                                </div>
+                            </div>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+   
+    <script>
+        $(document).ready(function(){
+            $('[id^="btn-confirmar-eliminar"]').click(function(){
+                var divId = $(this).attr('id').split('-')[3];
+                $('#dropdown-confirmacion-' + divId).show();
+            });
+            
+            $('[id^="btn-cancelar-eliminar"]').click(function(){
+                var divId = $(this).attr('id').split('-')[3];
+                $('#dropdown-confirmacion-' + divId).hide();
+            });
+        });
+    </script>
+</body>
+
+</html>
+{% endblock %}
