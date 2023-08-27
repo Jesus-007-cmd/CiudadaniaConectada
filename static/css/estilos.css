@@ -1,0 +1,77 @@
+/* styles.css */
+.titulo {
+    background-color: #286150;
+    border-radius: 20px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: white;
+    font-size: xxx-large;
+}
+
+/* Estilos agregar_reporte */
+
+.cssDescripcion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    
+    
+}
+
+.descripcion-input {
+    
+    margin-right: 20px;
+ 
+    text-align: center;
+}
+/* Fin de Estilos agregar_reporte */
+
+.img_sol{
+    width: auto;
+    height: auto;
+}
+
+/* A continuación estilos de reportesdeusuarios.html */ 
+
+/* Estilos para la tabla principal */
+table.main-table {
+    border-width: 3px;
+  
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table.main-table th,
+  table.main-table td {
+    padding: 10px;
+    border: 1px solid #143180; /* Borde blanco */
+  }
+  
+  /* Estilos para la tabla secundaria (avances) */
+/* Estilo para la tabla principal */
+.main-table {
+    border-width: 3px;
+   
+   
+  }
+  
+  /* Estilo para la subtabla */
+  .secondary-table {
+    border-width: 3px;
+    background-color:gray ;
+  }
+  
+  tr,
+  td {
+    padding: 2px;
+  }
+
+  /* Resto de los estilos */
+  /* ... */
+  
+
+/* Finaliza reportesdeusuario.html  */

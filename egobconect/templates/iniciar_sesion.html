@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+    <div class="text-center">
+        <h1> Bienvenido Ciudadano</h1>
+        <p></p>
+        <h4>Inicia Sesion para comenzar</h4>
+
+        {% if messages %}
+        <!-- bloque de mensajes -->
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tag %} class="{{ message.tags }}" {% endif %}> {{message}} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <!-- Formulario de Login -->
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username"> Nombre de usuario:</label>
+            <input type="text" name="username" id="username" required>
+            <br>
+            <label for="password"> Password</label>
+            <input type="password" name="password" id="password" required>
+            <br>
+            <input class="btn-primary" type="submit" value="Iniciar Sesión">
+            <button class="btn-primary" type="button" onclick="window.location.href='{% url 'register' %}'">REGISTRARSE</button>
+        </form>
+        <a href="{% url 'password_reset' %}">HAZ OLVIDADO TU CONTRASEÑA</a>
+    </div>
+</div>
+{% endblock %}

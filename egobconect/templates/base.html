@@ -1,20 +1,21 @@
 {% load bootstrap4 %}
 {% load widget_tweaks %}
+{% load static %} 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mi Proyecto{% endblock %}</title>
+    <title>{% block title %}Ciudadania Conectada{% endblock %}</title>
     {% bootstrap_css %}
 </head>
 
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Ciudadanía Electrónica</a>
+        <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #003366;">
+            <a class="navbar-brand" href="#" style="color: white;">Ciudadanía Conectada</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <span class="nav-link">
+                        <span class="nav-link" style="color: white;">
                             {% if user.is_authenticated %}
                                 Bienvenido, {{ user.username }}
                             {% else %}
@@ -30,7 +31,6 @@
                             {% endif %}
                         </span>
                     </li>
-                    
                 </ul>
             </div>
         </nav>
@@ -39,6 +39,16 @@
         {% block content %}
         {% endblock %}
     </main>
+    
+    <footer class="footer mt-auto py-3" style="background-color: #003366;">
+        <div class="container text-center">
+            <img src="{% static 'imagenes/ciudadanialogo.jpg' %}" alt="Logo Ciudadanía" style="max-width: 150px;">
+            <p class="text-white"> Conectando Ciudadanos, Transformando Gobiernos:
+             <br>   Tu Voz, Nuestro Compromiso
+           <br> © {{ year }} Ciudadanía Electrónica. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
     {% bootstrap_javascript %}
 </body>
 

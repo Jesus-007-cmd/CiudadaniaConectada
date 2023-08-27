@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh ;  ">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div >
+            {{ form.titulo.label_tag }}
+            {{ form.titulo }}
+        </div>
+        
+            <div class="descripcion-input">
+                <div class="descripcion-input" 
+                >Escribe aquí la descripción de la solicitud:</div> 
+                <textarea  id="{{ form.descripcion.id_for_label }}" name="{{ form.descripcion.name }}" rows="3"    cols="50"></textarea>
+            </div>
+         
+            <div class="container text-center mt-4">
+                <img class="img_sol" src="{% static 'imagenes/ciudadania.jpg' %}" alt="Imagen Visual" style="max-width: 250px;">
+            </div>
+          <div class="form-group">
+            {{ form.archivo_adjunto.label_tag }}
+            {{ form.archivo_adjunto }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+
+{% endblock %}

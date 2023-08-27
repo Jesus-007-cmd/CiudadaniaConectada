@@ -1,5 +1,6 @@
 from django import forms
-from .models import Open311ReporteProblema
+from .models import Open311ReporteProblema, SolicitudInformacion, AvanceReporte
+
 
 class ReporteForm(forms.ModelForm):
     class Meta:
@@ -19,3 +20,25 @@ class ReporteForm(forms.ModelForm):
         if not titulo or not descripcion or not categoria  or not direccion :
             raise forms.ValidationError("Todos los campos deben estar completos")
         return cleaned_data
+    
+
+class SolicitudForm(forms.ModelForm):
+    class Meta:
+        model = SolicitudInformacion
+        fields = ['titulo', 'descripcion',  'archivo_adjunto']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        titulo = cleaned_data.get('titulo')
+        descripcion = cleaned_data.get('descripcion')
+  
+
+        if not titulo or not descripcion  :
+            raise forms.ValidationError("Todos los campos deben estar completos")
+        return cleaned_data
+    
+    #Formularios de funcionarios:
+    class AvanceReporteForm(forms.ModelForm):
+        class Meta:
+            model = AvanceReporte
+            fields = ['comentario']

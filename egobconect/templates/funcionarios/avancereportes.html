@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Agregar Avance a Reporte</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reporte in reportes %}
+            <tr>
+                <td>{{ reporte.titulo }}</td>
+                <td>{{ reporte.descripcion }}</td>
+                <td>{{ reporte.status }}</td>
+                <td>
+                    {% if reporte.funcionario is null %}
+                        <form method="post" action="{% url 'tomar_solicitud' reporte.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Tomar Solicitud</button>
+                        </form>
+                    {% else %}
+                        Solicitud en proceso por {{ reporte.funcionario }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if avance_form %}
+    <h2>Agregar Avance</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ avance_form.as_p }}
+        <button type="submit" class="btn btn-primary">Agregar Avance</button>
+    </form>
+{% endif %}
+{% endblock %}

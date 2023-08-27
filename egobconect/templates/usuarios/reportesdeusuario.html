@@ -1,0 +1,99 @@
+
+{% extends "base.html" %}
+{% load static %} 
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<table class="main-table">
+    <thead>
+        <tr class="rojo">
+            <th class="rojo">Título</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Dirección</th>
+            <th>Latitud/Longitud</th>
+            <th>Fecha de creación</th>
+            <th>Fecha de última actualización</th>
+            <th>Imagen</th>
+            <th>Archivo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reporte in reportes %}
+            <tr>
+                <td>{{ reporte.titulo }}</td>
+                <td>{{ reporte.descripcion }}</td>
+                <td>{{ reporte.status }}</td>
+                <td>{{ reporte.direccion }}</td>
+                <td> {% if reporte.latitud %}
+                   {{ reporte.latitud }}/
+                   {{ reporte.longitud }}
+                   {% endif %}
+                </td>
+                <td>{{ reporte.fecha_creacion }}</td>
+                <td>{{ reporte.fecha_ultima_actualizacion }}</td>
+                <td>
+                    {% if reporte.imagen %}
+                        <a href="{{ reporte.imagen.url }}" target="_blank">
+                            <img src="{{ reporte.imagen.url }}" alt="Imagen" style="max-width: 100px; max-height: 100px;">
+                        </a>
+                    {% else %}
+                        No se agrego imagen
+                    {% endif %}
+                </td>
+
+                <td>
+                    {% if reporte.archivo_adjunto.url %}
+                    <a href="{{ reporte.archivo_adjunto.url }}">Descargar</a>
+                    {% else %}
+                        No se agrego archivo adjunto
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <h4>Avances:</h4>
+                    <table class="secondary-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha de Avance</th>
+                                <th>Comentario</th>
+                                <th>Funcionario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for avance in reporte.avancereporte_set.all %}
+                                <tr>
+                                    <td>
+                                        {% if avance.fecha_avance %}
+                                        {{ avance.fecha_avance }}
+                                        else
+                                        Sin fecha aún
+                                        {% endif %}
+
+                                    </td>
+                                    <td>
+                                        {% if avance.comentario %}
+                                        {{ avance.comentario }}
+                                        else
+                                        No se han realizado avances
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if avance.funcionario %}
+                                        {{ avance.funcionario }}
+                                        else
+                                        De momento no tenemos funcionario
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

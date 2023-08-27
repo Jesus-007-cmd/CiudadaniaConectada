@@ -3,42 +3,59 @@ from django.views import View
 from django.shortcuts import render, redirect
 
 from django.contrib import messages
-from django.contrib.auth import authenticate, login 
-from django.contrib.auth import logout
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import get_user_model
+
+from .forms import RegistroCiudadanoForm
+from django.urls import reverse   
 
 
-
-
+def custom_login(request): 
+    template_name = 'iniciar_sesion.html'
     
-def custom_login(request): #kwards validacion de varios argumentos pero solo se accedera al puro metodo
-    template_name='login.html'
-    if request.method == 'POST':  #dos parametros se requieren para aceder al login
+    if request.method == 'POST': 
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(request, username = username, password = password)
+        
+        User = get_user_model()  # Obtén el modelo de usuario personalizado
+       
+        # Consulta al usuario usando el modelo personalizado
+        user = authenticate(request, username=username, password=password)
+        print(username)
+        print(password)
         if user is not None:
-            login(request, user)
-            print('--------------> Si entró al login')
-            return redirect('/libros/inicio/')
+            if user.is_active:
+                # Utiliza el backend de autenticación adecuado
+                login(request, user)
+                print('--------------> Si entró al login')
+                return redirect('/reportessolicitudes/index_usuario/')
+            else:
+                print('----------------> Usuario no activo')
+                messages.error(request, 'El usuario no está activo')
         else:
-            print('----------------> No entró al login')
-            messages.error(request, 'Credenciales inválidas') 
+            print('----------------> Credenciales inválidas')
+            messages.error(request, 'Credenciales inválidas')
     return render(request, template_name)
 
 def custom_logout(request):
-    logout(request) #se le pasa nuestro request que incluira toda la información para generar el logout
-    return redirect('/login/')
+    logout(request)
+    return redirect(reverse('iniciar_sesion'))
 
 def register(request):
     if request.method == 'POST':   
-        form = UserRegistrationForm(request.POST)
+        form = RegistroCiudadanoForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
-            user = authenticate(username = username, password = password)
-            login(request, user)
-            return redirect('inicio')
+            messages.success(request, 'Registro exitoso. ¡Bienvenido!')
+            return redirect('index_usuario')  # Redirige primero
+            user = authenticate(username=username, password=password)
+            login(request, user)  # Luego autentica al usuario
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f'Error en {field}: {error}')
     else:
-        form = UserRegistrationForm()
+        form = RegistroCiudadanoForm()
     return render(request, 'registration/register.html', {'form': form})

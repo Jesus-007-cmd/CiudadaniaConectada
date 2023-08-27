@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Mis Solicitudes de Información</h2>
+    {% if solicitudes %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Adjunto</th>
+                    <th>Estado</th>
+                    <th>Fecha de Creación</th>
+                    <th>Última Actualización</th>
+                    <th>Funcionario Responsable</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for solicitud in solicitudes %}
+                    <tr>
+                        <td>{{ solicitud.titulo }}</td>
+                        <td>{{ solicitud.descripcion }}</td>
+                        <td>
+                            {% if solicitud.archivo_adjunto %}
+                                {% if solicitud.archivo_adjunto.url %}
+                                    {% if ".jpg" in solicitud.archivo_adjunto.name|lower or ".jpeg" in solicitud.archivo_adjunto.name|lower or ".png" in solicitud.archivo_adjunto.name|lower or ".gif" in solicitud.archivo_adjunto.name|lower %}
+                                        <a href="{{ solicitud.archivo_adjunto.url }}" target="_blank">
+                                        <img src="{{ solicitud.archivo_adjunto.url }}" alt="Adjunto" style="max-width: 100px; max-height: 100px;">
+                                    {% else %}
+                                        <a href="{{ solicitud.archivo_adjunto.url }}">Descargar</a>
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>{{ solicitud.estatus }}</td>
+                        <td>{{ solicitud.fecha_creacion }}</td>
+                        <td>{{ solicitud.fecha_ultima_actualizacion }}</td>
+                        <td>
+                            {% if solicitud.id_funcionario %}
+                                {{ solicitud.id_funcionario }}
+                            {% else %}
+                                Aún no ha dado respuesta un funcionario
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No tienes solicitudes de información.</p>
+    {% endif %}
+{% endblock %}

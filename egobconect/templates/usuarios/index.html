@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Bienvenido </h2>
+<ul>
+    <li><a href="{% url 'agregar_reporte' %}">Generar un Reporte</a></li> 
+    <li><a href="{% url 'agregar_solicitud' %}">Realizar una Solicitud de Información</a></li>
+    <li><a href="{% url 'mis_solicitudes' %}">Ver Mis Solicitudes Realizadas</a></li>
+    <li><a href="{% url 'mis_reportes' %}">Ver Mis Reportes Realizados</a></li>
+</ul>
+{% endblock %}
