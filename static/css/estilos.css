@@ -1,77 +1,246 @@
 /* styles.css */
 .titulo {
-    background-color: #286150;
-    border-radius: 20px;
-    padding: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+  background-color: #286150;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
-    color: white;
-    font-size: xxx-large;
+  color: white;
+  font-size: xxx-large;
 }
 
 /* Estilos agregar_reporte */
 
 .cssDescripcion {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    
-    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+
 }
 
 .descripcion-input {
-    
-    margin-right: 20px;
- 
-    text-align: center;
+
+  margin-right: 20px;
+
+  text-align: center;
 }
+
 /* Fin de Estilos agregar_reporte */
 
-.img_sol{
-    width: auto;
-    height: auto;
+.img_sol {
+  width: auto;
+  height: auto;
 }
 
-/* A continuación estilos de reportesdeusuarios.html */ 
+/* A continuación estilos de reportesdeusuarios.html */
 
 /* Estilos para la tabla principal */
 table.main-table {
-    border-width: 3px;
-  
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  table.main-table th,
-  table.main-table td {
-    padding: 10px;
-    border: 1px solid #143180; /* Borde blanco */
-  }
-  
-  /* Estilos para la tabla secundaria (avances) */
+  border-width: 3px;
+
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.main-table th,
+table.main-table td {
+  padding: 10px;
+  border: 1px solid #143180;
+}
+
+/* Estilos para la tabla secundaria (avances) */
 /* Estilo para la tabla principal */
 .main-table {
-    border-width: 3px;
-   
-   
-  }
-  
-  /* Estilo para la subtabla */
-  .secondary-table {
-    border-width: 3px;
-    background-color:gray ;
-  }
-  
-  tr,
-  td {
-    padding: 2px;
-  }
+  border-width: 3px;
 
-  /* Resto de los estilos */
-  /* ... */
-  
+
+}
+
+/* Estilo para la subtabla */
+.secondary-table {
+  border-width: 3px;
+  background-color: rgb(205, 239, 242);
+  font-size: 12px;
+}
+
+tr,
+td {
+  padding: 2px;
+}
+
+/* Resto de los estilos */
+/* ... */
+
+
 
 /* Finaliza reportesdeusuario.html  */
+
+/*Dar respuesta al reporte formatos */
+
+/* Estilos generales */
+.main-table-dar-respuesta {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #143180;
+  /* Otros estilos para la tabla */
+}
+
+table.main-table-dar-respuesta th,
+table.main-table-dar-respuesta td {
+  padding: 10px;
+  border: 1px solid #143180;
+}
+
+
+
+/* Estilos para el cuadro de texto de la descripción */
+.comentario-input textarea {
+  width: 100%;
+  /* Ancho del cuadro de texto al 100% del contenedor */
+  height: 100px;
+  /* Altura inicial del cuadro de texto */
+  resize: vertical;
+  /* Permitir redimensionamiento vertical */
+  padding: 8px;
+  /* Espaciado interno */
+  border: 1px solid #ccc;
+  /* Borde */
+  border-radius: 4px;
+  /* Bordes redondeados */
+  box-sizing: border-box;
+  /* Incluir el padding y borde en el tamaño total */
+}
+
+/* Estilos para el botón */
+.blue-button {
+  background-color: #0074D9;
+  /* Color de fondo azul */
+  color: white;
+  /* Color del texto */
+  border: none;
+  /* Sin borde */
+  border-radius: 4px;
+  /* Bordes redondeados */
+  padding: 10px 20px;
+  /* Espaciado interno */
+  cursor: pointer;
+  /* Cambio de cursor al pasar el mouse */
+}
+
+.table-title {
+  background-color: #66b3ff;
+
+  /* Otros estilos para el título de la columna */
+}
+
+.divider {
+  margin: 8px 0;
+  /* Ajusta el valor del margen vertical según tus preferencias */
+  border: none;
+  /* Quita el borde predeterminado */
+  border-top: 1px solid #ccc;
+  /* Agrega un borde superior de 1px sólido en color gris claro */
+}
+
+@media (max-width: 600px) {
+  .main-table-dar-respuesta {
+    font-size: 14px;
+    /* Reducir el tamaño de fuente */
+    /* Otros ajustes de estilo para pantallas pequeñas */
+  }
+}
+
+/*Finalizar dar respuesta al reporte */
+
+
+/* A partir de aqui ponemos css, para el admin_home*/
+.displaygrid {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items:  center;
+  /* grid-gap: 10px;*/
+  /*  grid-auto-rows: minmax(100px, auto);*/
+}
+
+@media (max-width: 940px) {
+  .displaygrid {
+    grid-template-columns: repeat(3, 1fr);
+
+  }
+}
+
+@media (max-width: 740px) {
+  .displaygrid {
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+}
+
+@media (max-width: 500px) {
+  .displaygrid {
+    grid-template-columns: 100%;
+    justify-items: center;
+    text-align: center;
+  }
+
+
+
+  /* Centra los títulos h1 y h4 */
+  h1,
+  h4 {
+    text-align: center;
+  }
+}
+
+.labels_admin {
+  padding-top: 15px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/* Hasta aqui finaliza css para el admin_home*/
+
+/*Estilos para base.html */
+.piebasehtml {
+  background-color: #003366;
+  color: white;
+  padding: 10px ;
+  text-align: center; /* Centra el contenido horizontalmente */
+  width: 100%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  
+}
+
+.displayflexbasefooter {
+  display: flex;
+  flex-direction: row;
+align-items: center;
+justify-content: space-between;
+}
+
+@media (max-width: 740px) {
+  .displayflexbasefooter {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center; 
+  }
+}
+
+@media (max-width: 500px) {
+  .displayflexbasefooter {
+    display: flex;
+  flex-direction: column;
+  }
+}
+
+
+/*fin de estilos para base.html */

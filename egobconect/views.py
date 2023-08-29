@@ -6,12 +6,15 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import get_user_model
 
-from .forms import RegistroCiudadanoForm
+from .forms import RegistroCiudadanoForm, AdminLoginForm
 from django.urls import reverse   
+
+def index(request):
+    return render(request, 'inicio.html')
 
 
 def custom_login(request): 
-    template_name = 'iniciar_sesion.html'
+    template_name = 'iniciar_sesion_ciudadano.html'
     
     if request.method == 'POST': 
         username = request.POST.get('username')
@@ -39,7 +42,7 @@ def custom_login(request):
 
 def custom_logout(request):
     logout(request)
-    return redirect(reverse('iniciar_sesion'))
+    return redirect(reverse('index'))
 
 def register(request):
     if request.method == 'POST':   
@@ -59,3 +62,51 @@ def register(request):
     else:
         form = RegistroCiudadanoForm()
     return render(request, 'registration/register.html', {'form': form})
+
+# Aqui empieza login de usuariofuncionario:
+def es_funcionario(user):
+    return hasattr(user, 'usuariofuncionario')
+
+def login_funcionario_view(request):
+    template_name = "iniciar_sesion_funcionario.html"
+    
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, username=username, password=password)
+        if user is not None and es_funcionario(user):
+            login(request, user)
+            return redirect('funcionario')
+        else:
+            messages.error(request, 'Credenciales inválidas para funcionario')
+    
+    return render(request, template_name)
+
+# Aqui empieza de adminsitrador:
+def admin_login(request):
+    template_name = 'iniciar_sesion_admin.html'
+    
+    if request.method == 'POST':
+        form = AdminLoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            
+            user = authenticate(request, username=username, password=password)
+            if user is not None and user.is_superuser:
+                login(request, user)
+                return redirect('admin_home')  # Cambia 'admin_home' por la URL a la página de administrador
+            else:
+                messages.error(request, 'Credenciales inválidas o no tienes permisos de administrador')
+    else:
+        form = AdminLoginForm()
+    
+    return render(request, template_name, {'form': form})
+
+
+
+
+
+
+

@@ -1,9 +1,10 @@
 {% load bootstrap4 %}
 {% load widget_tweaks %}
-{% load static %} 
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,9 +26,11 @@
                     <li class="nav-item">
                         <span class="nav-link" style="color: white;">
                             {% if user.is_authenticated %}
-                                Bienvenido, {{ user.username }}
+                            <span class="mr-2">Bienvenido: {{ user.username }}</span> <br>
+                            <a href="{% url 'cerrarsesion' %}">Cerrar Sesión</a>
                             {% else %}
-                                No has iniciado sesión
+                            <span class="mr-1.5">No has iniciado sesión</span>
+
                             {% endif %}
                         </span>
                     </li>
@@ -40,16 +43,42 @@
         {% endblock %}
     </main>
     
-    <footer class="footer mt-auto py-3" style="background-color: #003366;">
-        <div class="container text-center">
-            <img src="{% static 'imagenes/ciudadanialogo.jpg' %}" alt="Logo Ciudadanía" style="max-width: 150px;">
-            <p class="text-white"> Conectando Ciudadanos, Transformando Gobiernos:
-             <br>   Tu Voz, Nuestro Compromiso
-           <br> © {{ year }} Ciudadanía Electrónica. Todos los derechos reservados.</p>
+        {% if messages %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+    
+        {% endif %}
+
+
+        {% bootstrap_javascript %}
+    <footer class="piebasehtml" >
+        <div class="displayflexbasefooter">
+            
+            <div class="piebasehtml">
+                <img src="{% static 'imagenes/plazachihuahuacentro.jpg' %}" alt="Foto plaza e iglesia de chihuahua centro"
+                    style="max-width: 250px;">
+            </div>
+            <div class="container-fluid text-center">
+                <p class="text-white"> Conectando Ciudadanos, Transformando Gobiernos:
+                    <br> Tu Voz, Nuestro Compromiso
+                    <br> © {{ year }} Ciudadanía Electrónica. Todos los derechos reservados.
+                    <br><img src="{% static 'imagenes/ciudadanialogo.jpg' %}" alt="Logo Ciudadanía" style="max-width: 150px;">
+                </p>
+            </div>
+            <div class="piebasehtml">
+                <img src="{% static 'imagenes/plazachihuahuacentro2.jpg' %}" alt="Foto plaza e iglesia de chihuahua centro"
+                    style="max-width: 250px;">
+            </div>
         </div>
     </footer>
-    
-    {% bootstrap_javascript %}
+  
 </body>
+
+
+
 
 </html>

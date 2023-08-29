@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+    <div class="text-center">
+        <h1> Inicio de Sesión Funcionario</h1>
+        <p></p>
+        
+        {% if messages %}
+        <!-- Bloque de mensajes -->
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tag %} class="{{ message.tags }}" {% endif %}> {{message}} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+        <!-- Formulario de Login -->
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username"> Nombre de usuario:</label>
+            <input type="text" name="username" id="username" required>
+            <br>
+            <label for="password"> Password</label>
+            <input type="password" name="password" id="password" required>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Iniciar Sesión">
+            
+            <a href="{% url 'cerrarsesion' %}" class="btn btn-dark">REGRESAR</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,11 +1,45 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<h2>Bienvenido </h2>
-<ul>
-    <li><a href="{% url 'agregar_reporte' %}">Generar un Reporte</a></li> 
-    <li><a href="{% url 'agregar_solicitud' %}">Realizar una Solicitud de Información</a></li>
-    <li><a href="{% url 'mis_solicitudes' %}">Ver Mis Solicitudes Realizadas</a></li>
-    <li><a href="{% url 'mis_reportes' %}">Ver Mis Reportes Realizados</a></li>
-</ul>
+<h2>Bienvenido</h2>
+<div class="displaygrid">
+    <div>
+        <a href="{% url 'agregar_reporte' %}">
+            <img src="{% static 'imagenes/usuariociudadano.jpg' %}" alt="Imagen 1" class="option-image">
+            <p>Generar un Reporte
+            </p>
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'agregar_solicitud' %}">
+            <img src="{% static 'imagenes/usuariociudadano3.jpg' %}" alt="Imagen 1" class="option-image">
+            <p>Realizar una Solicitud de Información
+            </p>
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'mis_solicitudes' %}">
+            <img src="{% static 'imagenes/versolicitud.jpg' %}" alt="Imagen 3" style="width: 260px; height: 180px;">
+            <p>Ver Mis Solicitudes Realizadas
+            </p>
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'mis_reportes' %}">
+            <img src="{% static 'imagenes/verreportes.jpg' %}" alt="Imagen 4" style="width: 240px; height: 180px;">
+            <p>Ver Mis Reportes Realizados</p>
+        </a>
+    </div>
+
+</div>
+<div style="text-align: center; padding-bottom: 20px;">
+    <a href="{% url 'cerrarsesion' %}" class="blue-button">Menú Principal</a>
+</div>
+<style>
+    .option-image {
+        width: 150px;
+        height: 180px;
+    }
+</style>
 {% endblock %}

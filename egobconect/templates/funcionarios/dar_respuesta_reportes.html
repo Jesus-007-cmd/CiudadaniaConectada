@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<h2>Dar Respuesta al Reporte</h2>
+<div class="reporte-details">
+
+    <table class="main-table-dar-respuesta">
+        <tr>
+
+            <th colspan="2" class="table-title">Detalles del Reporte</th>
+
+        </tr>
+        <tr>
+            <td>
+                <strong>Título:</strong> {{ reporte.titulo }}<br>
+                <hr class="divider">
+                <strong>Descripción:</strong> {{ reporte.descripcion }}<br>
+                <hr class="divider">
+                <strong>Categoría:</strong> {{ reporte.categoria }}<br>
+                <hr class="divider">
+                <strong>Estado:</strong> {{ reporte.estatus }}<br>
+                <hr class="divider">
+                <strong>Ubicación:</strong> {{ reporte.direccion }}<br>
+                <hr class="divider">
+                <strong>Latitud/Longitud:</strong> {{ reporte.latitud }}/{{ reporte.longitud}}<br>
+                <hr class="divider">
+            </td>
+            <td>
+
+                <strong>Fecha de Creacion:</strong> {{ reporte.fecha_creacion }}<br>
+                <hr class="divider">
+                <strong>Fecha de Ultima Actualización:</strong> {{ reporte.fecha_ultima_actualizacion }}<br>
+                <hr class="divider">
+                <strong>Imagen:</strong>
+                {% if reporte.imagen %}
+                <a href="{{ reporte.imagen.url }}" target="_blank">
+                    <img src="{{ reporte.imagen.url }}" alt="Imagen" style="max-width: 100px; max-height: 100px;">
+                </a>
+                {% else %}
+                No se agrego imagen
+                {% endif %}
+                <br>
+                <hr class="divider">
+                <strong>Archivo Adjunto:</strong>
+                {% if reporte.archivo_adjunto %}
+                <a href="{{ reporte.archivo_adjunto.url }}">Descargar</a>
+                {% else %}
+                No se agrego archivo adjunto
+                {% endif %}
+                <br>
+                <hr class="divider">
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2" class="table-title">Responder</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="comentario-input">
+                        <div>
+                            Escriba aquí la descripción de la solución o seguimiento que se le está dando al reporte del
+                            ciudadano:
+                        </div>
+                        <textarea id="{{ avance_form.comentario.id_for_label }}"
+                            name="{{ avance_form.comentario.name }}"></textarea>
+                        <div>
+                            {{ avance_form.finalizar.label_tag }}
+                            {{ avance_form.finalizar }}
+                        </div>
+                        <button type="submit" class="blue-button">Guardar Respuesta</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <h4>Avances Relacionados</h4>
+    <table class="main-table-dar-respuesta">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Comentario</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for avance in reporte.avancereporte_set.all %}
+            <tr>
+                <td>{{ avance.fecha_avance }}</td>
+                <td>{{ avance.comentario }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -6,15 +6,15 @@
 <div class="d-flex justify-content-center align-items-center" style="height: 100vh ;  ">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
+        <a href="{% url 'index_usuario' %}">REGRESAR</a>
         <div >
             {{ form.titulo.label_tag }}
             {{ form.titulo }}
         </div>
         
             <div class="descripcion-input">
-                <div class="descripcion-input" 
-                >Escribe aquí la descripción de la solicitud:</div> 
+                <div class="descripcion-input">
+                    Escribe aquí la descripción de la solicitud:</div> 
                 <textarea  id="{{ form.descripcion.id_for_label }}" name="{{ form.descripcion.name }}" rows="3"    cols="50"></textarea>
             </div>
          

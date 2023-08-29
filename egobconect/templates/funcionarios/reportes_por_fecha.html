@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Reportes por Fecha</h1>
+
+<form method="GET">
+    <label for="start_date">Fecha de inicio:</label>
+    <input type="date" name="start_date" required>
+    <label for="end_date">Fecha de fin:</label>
+    <input type="date" name="end_date" required>
+    <button type="submit">Generar Reportes</button>
+</form>
+
+{% if reportes %}
+<h2>Resultados:</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Categoría</th>
+            <th>Estado</th>
+            <th>Ubicación</th>
+            <th>Fecha de Creación</th>
+            <th>Última Actualización</th>
+            <th>Imagen</th>
+            <th>Archivo Adjunto</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reporte in reportes %}
+        <tr>
+            <td>{{ reporte.titulo }}</td>
+            <td>{{ reporte.descripcion }}</td>
+            <td>{{ reporte.categoria }}</td>
+            <td>{{ reporte.estatus }}</td>
+            <td>{{ reporte.direccion }}</td>
+            <td>{{ reporte.fecha_creacion }}</td>
+            <td>{{ reporte.fecha_ultima_actualizacion }}</td>
+            <td>
+                {% if reporte.imagen %}
+                <a href="{{ reporte.imagen.url }}" target="_blank">
+                    <img src="{{ reporte.imagen.url }}" alt="Imagen" style="max-width: 100px; max-height: 100px;">
+                </a>
+                {% else %}
+                No se agrego imagen
+                {% endif %}
+            </td>
+            <td>
+                {% if reporte.archivo_adjunto %}
+                <a href="{{ reporte.archivo_adjunto.url }}">Descargar</a>
+                {% else %}
+                No disponible
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div style="text-align: center; padding-bottom: 20px;">
+    <a href="{% url 'funcionario' %}" class="blue-button">Volver</a>
+</div>
+{% endif %}
+{% endblock %}

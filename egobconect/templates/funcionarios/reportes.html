@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Generación de Reportes</h1>
+
+<h3>Reportes por Fecha</h3>
+<form method="GET" action="{% url 'reportes_por_fecha' %}">
+    <label for="start_date">Fecha de inicio:</label>
+    <input type="date" name="start_date" required>
+    <label for="end_date">Fecha de fin:</label>
+    <input type="date" name="end_date" required>
+    <button type="submit">Generar Reportes</button>
+</form>
+
+<h1 style="color: black;">Los siguientes reportes aún no han sido implementados, solo se genero una plantilla con posibles ideas, tal vez no apliquen pero pueden generar nuevas ideas:</h1>
+<h3>Reportes por Ciudad</h3>
+<form method="GET" action="{% url 'mis_reportes' %}">
+    <label for="ciudad">Ciudad:</label>
+    <input type="text" name="ciudad" required>
+    <button type="submit">Generar Reportes</button>
+</form>
+
+<h3>Reportes por Categoría y Estatus</h3>
+<form method="GET" action="{% url 'mis_reportes' %}">
+    <label for="categoria">Categoría:</label>
+    <input type="text" name="categoria" required>
+    <label for="estatus">Estatus:</label>
+    <input type="text" name="estatus" required>
+    <button type="submit">Generar Reportes</button>
+</form>
+{% endblock %}
+
+<!--
+    Las siguientes forms serían como podrían aplicarse las rutas en caso de acompletar esta parte del código:
+    <form method="GET" action="{% url 'reportes_por_ciudad' %}">
+    <form method="GET" action="{% url 'reportes_por_categoria_estatus' %}">
+-->

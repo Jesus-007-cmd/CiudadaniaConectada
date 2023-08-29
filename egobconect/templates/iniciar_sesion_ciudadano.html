@@ -23,8 +23,10 @@
             <label for="password"> Password</label>
             <input type="password" name="password" id="password" required>
             <br>
-            <input class="btn-primary" type="submit" value="Iniciar Sesión">
-            <button class="btn-primary" type="button" onclick="window.location.href='{% url 'register' %}'">REGISTRARSE</button>
+            <input class="btn btn-primary" type="submit" value="Iniciar Sesión">
+            
+            <a href="{% url 'register' %}" class="btn btn-primary">REGISTRARSE</a>
+            <a href="{% url 'cerrarsesion' %}" class="btn btn-dark">REGRESAR</a>
         </form>
         <a href="{% url 'password_reset' %}">HAZ OLVIDADO TU CONTRASEÑA</a>
     </div>

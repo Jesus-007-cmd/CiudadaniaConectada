@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<div>
+    <div class="form-container">
+        <h1 class="mb-4">Administración</h1>
+        <h4 class="mb-4">A continuación podras crear un usuarios funcionario</h4>
+        <!-- Formulario de Crear Usuario Funcionario -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="displaygrid ">
+                <div>
+                    <label for="{{ form.username.id_for_label }}" class="labels_admin">Nombre de usuario</label> <br>
+                    {{ form.username }}
+                </div>
+
+                <div>
+                    <label for="{{ form.email.id_for_label }}" class="labels_admin">Correo electrónico</label><br>
+                    {{ form.email }}
+                </div>
+
+                <div>
+                    <label for="{{ form.password1.id_for_label }}" class="labels_admin">Contraseña</label><br>
+                    {{ form.password1 }}
+                </div>
+
+                <div>
+                    <label for="{{ form.password2.id_for_label }}" class="labels_admin">Confirmar contraseña</label><br>
+                    {{ form.password2 }}
+                </div>
+
+                <div>
+                    <label for="{{ form.first_name.id_for_label }}" class="labels_admin">Nombres</label><br>
+                    {{ form.first_name }}
+                </div>
+
+                <div>
+                    <label for="{{ form.last_name.id_for_label }}" class="labels_admin">Apellidos</label><br>
+                    {{ form.last_name }}
+                </div>
+
+                <div>
+                    <label for="{{ form.cargo.id_for_label }}" class="labels_admin">Cargo o Puesto</label><br>
+                    {{ form.cargo }}
+                </div>
+
+                <div>
+                    <label for="{{ form.departamento.id_for_label }}" class="labels_admin">Departamento o
+                        Área</label><br>
+                    {{ form.departamento }}
+                </div>
+
+                <div>
+                    <label for="{{ form.telefono_contacto.id_for_label }}" class="labels_admin">Teléfono de
+                        Contacto</label><br>
+                    {{ form.telefono_contacto }}
+                </div>
+
+                <div>
+                    <label for="{{ form.horario_trabajo.id_for_label }}" class="labels_admin">Horario de
+                        Trabajo</label><br>
+                    {{ form.horario_trabajo }}
+                </div>
+
+                <div>
+                    <label for="{{ form.especialidad.id_for_label }}" class="labels_admin">Especialidad o
+                        Experiencia</label><br>
+                    {{ form.especialidad }}
+                </div>
+
+                <div>
+                    <label for="{{ form.foto_perfil.id_for_label }}" class="labels_admin">Foto de Perfil</label><br>
+                    {{ form.foto_perfil }}
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 30px;">
+                <input class="btn btn-primary" type="submit" value="Crear Usuario Funcionario"
+>
+            </div>
+        </form>
+
+        <!-- Tabla de funcionarios -->
+        <h2>Usuarios registrados para funcionarios</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID Funcionario</th>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cargo</th>
+                    <th>Departamento</th>
+                    <th>Teléfono de Contacto</th>
+                    <th>Horario de Trabajo</th>
+                    <th>Especialidad</th>
+                    <th>Foto de Perfil</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for funcionario in funcionarios %}
+
+
+                <tr>
+
+                    <td>{{ funcionario.id_funcionario.id }}</td>
+                    <td>{{ funcionario.id_funcionario.username }}</td>
+                    <td>{{ funcionario.id_funcionario.email }}</td>
+                    <td>{{ funcionario.id_funcionario.first_name }}</td>
+                    <td>{{ funcionario.id_funcionario.last_name }}</td>
+                    <td>{{ funcionario.cargo }}</td>
+                    <td>{{ funcionario.departamento }}</td>
+                    <td>{{ funcionario.telefono_contacto }}</td>
+                    <td>{{ funcionario.horario_trabajo }}</td>
+                    <td>{{ funcionario.especialidad }}</td>
+                    <td><img src="{{ funcionario.foto_perfil.url }}" alt="Foto de perfil" width="50"></td>
+                </tr>
+
+
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+<!-- dar_respuesta_solicitud.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<h2>Dar Respuesta a la Solicitud de Información</h2>
+<div class="solicitud-details">
+
+    <table class="main-table-dar-respuesta">
+        <tr>
+            <th colspan="2" class="table-title">Detalles de la Solicitud</th>
+        </tr>
+        <tr>
+            <td>
+                <strong>Título:</strong> {{ solicitud.titulo }}<br>
+                <hr class="divider">
+                <strong>Descripción:</strong> {{ solicitud.descripcion }}<br>
+                <hr class="divider">
+                <strong>Estado:</strong> {{ solicitud.estatus }}<br>
+                <hr class="divider">
+                <strong>Fecha de Creación:</strong> {{ solicitud.fecha_creacion }}<br>
+                <hr class="divider">
+                <strong>Archivo adjunto:</strong>
+                {% if reporte.archivo_adjunto %}
+                <a href="{{ solicitud.archivo_adjunto.url }}">Descargar</a>
+                {% else %}
+                No se agrego archivo adjunto
+                {% endif %}
+                <br>
+                <hr class="divider">
+                
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2" class="table-title">Responder</th>
+        </tr>
+        <td colspan="2">
+        <form method="post">
+            {% csrf_token %}
+            <div class="comentario-input">
+                <div>
+                    Escriba aquí la la respuesta a la petición de la solicitud de información:
+                </div>
+                <textarea id="{{ avance_form.comentario.id_for_label }}" name="{{ avance_form.comentario.name }}"></textarea>
+               
+                <button type="submit" class="blue-button">Guardar Respuesta</button>
+            </div>
+        </form>
+    </tr>
+        
+    </table>
+</div>
+{% endblock %}

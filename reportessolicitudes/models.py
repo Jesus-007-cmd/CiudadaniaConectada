@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import Group, Permission
 from django.db import models
 
-
+from django.contrib.auth.models import User
+from django.conf import settings
 
 #Este permitira guardar los reportes de problemas
 class Open311ReporteProblema (models.Model):
@@ -47,19 +48,21 @@ class SolicitudInformacion(models.Model):
     id_ciudadano = models.CharField('id Ciudadano', max_length=20, unique=False)  
     id_funcionario = models.CharField('id funcionario', max_length=20, unique=False)  
     archivo_adjunto = models.FileField("Archivo Adjunto", upload_to='archivos_solicitudes/', blank=True, null=True)
-
+    comentario = models.TextField("Comentario")
     def __str__(self):
         return self.titulo
 
-#Este permitirá 
+
 class UsuarioFuncionario(models.Model):
+    id_funcionario = models.OneToOneField(User, on_delete=models.CASCADE)
     cargo = models.CharField("Cargo o Puesto", max_length=100)
     departamento = models.CharField("Departamento o Área", max_length=100)
     telefono_contacto = models.CharField("Teléfono de Contacto", max_length=20)
     horario_trabajo = models.CharField("Horario de Trabajo", max_length=100)
     especialidad = models.CharField("Especialidad o Experiencia", max_length=100, blank=True)
     foto_perfil = models.ImageField("Foto de Perfil", upload_to='funcionarios/', blank=True)
-    id_funcionario = models.CharField('id funcionario', max_length=20, unique=True)  
+    
+    
     def __str__(self):
         return f"{self.nombres} {self.apellidos}"
 

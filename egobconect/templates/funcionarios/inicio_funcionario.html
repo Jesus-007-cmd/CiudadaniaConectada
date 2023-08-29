@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Bienvenido Funcionario</h2>
+<ul>
+    <li><a href="{% url 'lista_reportes_funcionario' %}">Ver reportes de la ciudadanía</a></li>
+    <li><a href="{% url 'lista_solicitudes_funcionario' %}">Lista de Solicitudes de información</a></li> 
+    <li><a href="{% url 'reportes_por_fecha' %}">Reportes por fecha</a></li>
+    
+</ul>
+{% endblock %}
+<!--
+
+    Estos quedan pendientes para después
+<li><a href="{% url 'reportes_por_ciudad' %}">Reportes por ciudad</a></li>
+    <li><a href="{% url 'reportes_por_categoria_estatus' %}">Reportes por categoría y estatus</a></li>
+
+-->

@@ -1,6 +1,8 @@
 from django import forms
-from .models import Open311ReporteProblema, SolicitudInformacion, AvanceReporte
+from .models import Open311ReporteProblema, SolicitudInformacion, AvanceReporte, UsuarioFuncionario
+from django.contrib.auth.forms import UserCreationForm
 
+from django.contrib.auth.models import User
 
 class ReporteForm(forms.ModelForm):
     class Meta:
@@ -38,7 +40,50 @@ class SolicitudForm(forms.ModelForm):
         return cleaned_data
     
     #Formularios de funcionarios:
-    class AvanceReporteForm(forms.ModelForm):
-        class Meta:
-            model = AvanceReporte
-            fields = ['comentario']
+class AvanceReporteForm(forms.ModelForm):
+    finalizar = forms.BooleanField(label="¿Finalizar reporte?", required=False)  # Agrega este campo
+
+    class Meta:
+        model = AvanceReporte
+        fields = ['comentario', 'finalizar']  # Incluye el campo 'finalizar'
+
+class AvanceSolicitudForm(forms.ModelForm):
+    finalizar = forms.BooleanField(label="¿Finalizar solicitud?", required=False)
+    
+    class Meta:
+        model = SolicitudInformacion
+        fields = ['comentario', 'finalizar']
+
+
+#Formulario para crear usuarios funcionarios:
+class FuncionarioCreationForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+    cargo = forms.CharField(label='Cargo o Puesto', max_length=100)
+    departamento = forms.CharField(label='Departamento o Área', max_length=100)
+    telefono_contacto = forms.CharField(label='Teléfono de Contacto', max_length=20)
+    horario_trabajo = forms.CharField(label='Horario de Trabajo', max_length=100)
+    especialidad = forms.CharField(label='Especialidad o Experiencia', max_length=100, required=False)
+    foto_perfil = forms.ImageField(label='Foto de Perfil', required=False)
+    
+    
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2', 'first_name', 'last_name' ]
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        if commit:
+            user.is_staff = True  # Asegura que el usuario creado sea un staff
+            user.save()
+            funcionario = UsuarioFuncionario.objects.create(
+                
+                cargo=self.cleaned_data['cargo'],
+                departamento=self.cleaned_data['departamento'],
+                telefono_contacto=self.cleaned_data['telefono_contacto'],
+                horario_trabajo=self.cleaned_data['horario_trabajo'],
+                especialidad=self.cleaned_data['especialidad'],
+                foto_perfil=self.cleaned_data['foto_perfil'],
+                id_funcionario=user.id
+                
+            )
+        return user

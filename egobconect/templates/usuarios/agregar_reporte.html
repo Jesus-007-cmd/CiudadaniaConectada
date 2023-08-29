@@ -6,7 +6,7 @@
 <div class="container">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
+        <a href="{% url 'index_usuario' %}">REGRESAR</a>
         <div class="form-group">
             {{ form.titulo.label_tag }}
             {{ form.titulo }}

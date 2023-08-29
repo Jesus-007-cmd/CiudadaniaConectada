@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<h2>Bienvenido Funcionario</h2>
+<h4>Reportes Pendientes por Resolver</h4>
+<table class="main-table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Dirección</th>
+            <th>Latitud/Longitud</th>
+            <th>Fecha de creación</th>
+            <th>Fecha de última actualización</th>
+            <th>Imagen</th>
+            <th>Archivo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reporte in reportes %}
+        <tr>
+            {% if reporte.estatus != "Finalizado" %}
+            <td>{{ reporte.titulo }}</td>
+            <td>{{ reporte.descripcion }}</td>
+            <td>{{ reporte.estatus }}</td>
+            <td>{{ reporte.direccion }}</td>
+            <td> {% if reporte.latitud %}
+               {{ reporte.latitud }}/
+               {{ reporte.longitud }}
+               {% endif %}
+            </td>
+            <td>{{ reporte.fecha_creacion }}</td>
+            <td>{{ reporte.fecha_ultima_actualizacion }}</td>
+            <td>
+                {% if reporte.imagen %}
+                    <a href="{{ reporte.imagen.url }}" target="_blank">
+                        <img src="{{ reporte.imagen.url }}" alt="Imagen" style="max-width: 100px; max-height: 100px;">
+                    </a>
+                {% else %}
+                    No se agrego imagen
+                {% endif %}
+            </td>
+
+            <td>
+                {% if reporte.archivo_adjunto %}
+                <a href="{{ reporte.archivo_adjunto.url }}">Descargar</a>
+                {% else %}
+                    No se agrego archivo adjunto
+                {% endif %}
+            </td>
+            <td><a href="{% url 'dar_respuesta' reporte.id %}">Dar Respuesta</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p></p>
+<h4>Reportes Finalizados</h4>
+<table class="main-table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Dirección</th>
+            <th>Latitud/Longitud</th>
+            <th>Fecha de creación</th>
+            <th>Fecha de última actualización</th>
+            <th>Imagen</th>
+            <th>Archivo</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for reporte in reportes %}
+        <tr>
+            {% if reporte.estatus == "Finalizado" %}
+            <td>{{ reporte.titulo }}</td>
+            <td>{{ reporte.descripcion }}</td>
+            <td>{{ reporte.estatus }}</td>
+            <td>{{ reporte.direccion }}</td>
+            <td> {% if reporte.latitud %}
+               {{ reporte.latitud }}/
+               {{ reporte.longitud }}
+               {% endif %}
+            </td>
+            <td>{{ reporte.fecha_creacion }}</td>
+            <td>{{ reporte.fecha_ultima_actualizacion }}</td>
+            <td>
+                {% if reporte.imagen %}
+                    <a href="{{ reporte.imagen.url }}" target="_blank">
+                        <img src="{{ reporte.imagen.url }}" alt="Imagen" style="max-width: 100px; max-height: 100px;">
+                    </a>
+                {% else %}
+                    No se agrego imagen
+                {% endif %}
+            </td>
+
+            <td>
+                {% if reporte.archivo_adjunto %}
+                <a href="{{ reporte.archivo_adjunto.url }}">Descargar</a>
+                {% else %}
+                    No se agrego archivo adjunto
+                {% endif %}
+            </td>
+           
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+ <!--<td><a href="{% url 'dar_respuesta' reporte.id %}">Dar Respuesta</a></td>-->  

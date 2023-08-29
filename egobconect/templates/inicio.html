@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <div class="text-center">
+        <h1>Bienvenido</h1>
+        <h5>Inicia Sesión según tu tipo de usuario de preferencia:</h5>
+        <br><br>
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{% url 'iniciarsesionciudadano' %}">
+                    <img src="{% static 'imagenes/usuariociudadano2.jpg' %}" alt="Acceso Ciudadano"
+                        class="option-image">
+                    <h3>Acceso Ciudadano</h3>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'iniciarsesionfuncionario' %}">
+                    <img src="{% static 'imagenes/usuariofuncionario3.jpg' %}" alt="Acceso Funcionario"
+                        class="option-image">
+                    <h3>Acceso Funcionario</h3>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'iniciarsesionadmin' %}">
+                    <img src="{% static 'imagenes/usuarioadmin.jpg' %}" alt="Acceso Administrador" class="option-image">
+                    <h3>Acceso Administrador</h3>
+                </a>
+            </div>
+        </div>
+        <div>
+            <p></p>
+            <h6>Se crean las 3 opciones de manera demostrativa ya que un sistema de esta categoría solo debe tener un
+                menú inicial para cada usuario</h6>
+        </div>
+    </div>
+</div>
+
+<style>
+    .option-image {
+        width: 100px;
+        height: 120px;
+    }
+</style>
+
+{% endblock %}

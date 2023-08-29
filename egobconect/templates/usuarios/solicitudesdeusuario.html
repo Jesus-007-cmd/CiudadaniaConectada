@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<a href="{% url 'index_usuario' %}">REGRESAR</a>
     <h2>Mis Solicitudes de Información</h2>
     {% if solicitudes %}
         <table class="table">

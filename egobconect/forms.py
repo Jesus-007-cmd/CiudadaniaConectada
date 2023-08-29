@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+
 class RegistroCiudadanoForm(UserCreationForm):
     email = forms.EmailField()
 
@@ -35,3 +36,9 @@ class RegistroCiudadanoForm(UserCreationForm):
                     "La contraseña no puede consistir en números solamente. "
                     "Asegúrate de incluir caracteres diferentes en tu contraseña."
                 )
+
+#Formulario para administrador
+class AdminLoginForm(forms.Form):
+    username = forms.CharField(label='Nombre de usuario')
+    password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
+

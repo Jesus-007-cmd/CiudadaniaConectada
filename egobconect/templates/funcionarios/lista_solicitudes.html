@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<h2>Lista de Solicitudes de Información Pendientes</h2>
+
+<table class="main-table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Fecha de Creación</th>
+            <th>Fecha de Última Actualización</th>
+            <th>Archivo Adjunto</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for solicitud in solicitudes %}
+        <tr>
+            {% if solicitud.estatus != "Finalizado" %}
+            <td>{{ solicitud.titulo }}</td>
+            <td>{{ solicitud.descripcion }}</td>
+            <td>{{ solicitud.estatus }}</td>
+            <td>{{ solicitud.fecha_creacion }}</td>
+            <td>{{ solicitud.fecha_ultima_actualizacion }}</td>
+            <td>
+                {% if solicitud.archivo_adjunto %}
+                <a href="{{ solicitud.archivo_adjunto.url }}">Descargar</a>
+                {% else %}
+                No se agregó archivo adjunto
+                {% endif %}
+            </td>
+            <td><a href="{% url 'dar_respuesta_solicitud' solicitud.id %}">Dar Respuesta</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Lista de Solicitudes de Información Finalizadas</h2>
+
+<table class="main-table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Fecha de Creación</th>
+            <th>Fecha de Última Actualización</th>
+            <th>Archivo Adjunto</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for solicitud in solicitudes %}
+        <tr>
+            {% if solicitud.estatus == "Finalizado" %}
+            <td>{{ solicitud.titulo }}</td>
+            <td>{{ solicitud.descripcion }}</td>
+            <td>{{ solicitud.estatus }}</td>
+            <td>{{ solicitud.fecha_creacion }}</td>
+            <td>{{ solicitud.fecha_ultima_actualizacion }}</td>
+            <td>
+                {% if solicitud.archivo_adjunto %}
+                <a href="{{ solicitud.archivo_adjunto.url }}">Descargar</a>
+                {% else %}
+                No se agregó archivo adjunto
+                {% endif %}
+            </td>
+           
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
