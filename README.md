@@ -1,5 +1,7 @@
 
-# ![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.002.jpeg)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/6babed15-c274-4901-8863-e9ca6c5ce544)
+
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/17c1a8d1-3162-46ff-864d-08a7804114ad)
 
 # <a name="_toc144312451"></a><a name="_toc144312452"></a><a name="_toc144312453"></a>"Sistema de Apoyo Ciudadano y Gubernamental basado en el estándar 311 para optimizar la comunicación y cumplir con las necesidades de la comunidad."
 # <a name="_toc144312454"></a>**Por: Jesús Antonio Gutiérrez Aguilar**
