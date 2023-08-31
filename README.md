@@ -230,7 +230,8 @@ Relaciones:
 
 ### <a name="_toc144312466"></a>Diagrama de modelos o base de datos 
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.003.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/b1e38770-90fb-4ae3-8bf9-616c8d8bb7ca)
+
 
 ## <a name="_toc144312467"></a>**Diseño de Pantallas y Documentación en Ausencia de Prototipo: Avance hacia una Interfaz Finalizada.**
 
@@ -256,7 +257,8 @@ El Sistema de Comunicación Ciudadana y Gestión de Servicios Municipales es una
 ## <a name="_toc144312469"></a>**Pantalla Inicial del sistema**
 Se ha creado una Pantalla Inicial que permite a los usuarios acceder a las funcionalidades y características del sistema en tres roles diferentes: Administrador, Ciudadano y funcionario. Esta pantalla inicial es una herramienta didáctica diseñada para ilustrar de manera clara y concisa las capacidades del sistema y cómo se adaptan a las necesidades de diferentes tipos de usuarios:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.004.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/065add80-5662-43b6-9864-1b585b7d46f6)
+
 ###
 ### <a name="_toc144312470"></a>Administrador: 
 Los usuarios con el rol de Administrador tienen acceso a funciones de administración como dar de alta usuarios funcionarios, así como ver los usuarios funcionarios actuales, por motivos de tiempo no se realizó funciones para desactivar usuarios o incluso eliminar usuarios sin embargo puede realizarse una mejora a este sistema futuramente si es que lo solicitan. 
@@ -270,22 +272,26 @@ Password: ghdl@G58PP
 #### Iniciar sesión como administrador:
 Para hacerlo se realiza nos pide las credenciales:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.005.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/31c5eb1d-ea6d-429a-910d-37135dbc3d9d)
+
 #### Pantalla de administración:
 - #### Dar de alta un usuario funcionario.
 En esta parte del sistema se podrá dar de alta nuevos usuarios funcionarios, así como la visualización de los mismos, como se menciono anteriormente se pueden dar las mejoras para dar de desactivar o activar a los usuarios, otras nuevas como roles, o eliminar usuarios.
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.006.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/d1a180fe-4d34-4af9-865b-741d2f3c4cfe)
+
 
 Para hacerlo es necesario llenar los campos, el sistema permite elegir una imagen para poder descargar bajar en la barra de desplazamiento vertical y presionar el botón **crear usuario funcionario:**
 
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.007.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/05aabb2e-524d-4d55-a9e5-b58c163a9fce)
+
 
 - #### Ver usuarios funcionarios registrados
 Si nos desplazamos en la misma pantalla de administración, en la parte inferior se pueden observar los usuarios funcionarios dados de alta como se muestra a continuación:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.008.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/c80b8d6e-ff31-4a47-99f2-6685b7ab792b)
+
 
 
 ### <a name="_toc144312471"></a>Ciudadano
@@ -293,7 +299,8 @@ En esta opción, los usuarios con el rol de Ciudadano pueden acceder a las funci
 #### Iniciar sesión como ciudadano:
 La pantalla inicial de inicio de sesión tiene la facultad de poder crear nuevos usuarios con validación de correo electrónico, también se puede recuperar la contraseña y se cuenta con función para regresar al menú anterior como se muestra a continuación:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.009.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/696e5de0-a173-4fff-9c4f-7213902c7673)
+
 
 **Iniciar sesión como ciudadano**. - Si eres un usuario registrado puedes acceder al sistema escribiendo tu nombre de usuario y contraseña y finalmente presionar este botón. Para acceder a esta opción es a través del formulario de inicio del sistema como se mencionó en la sección anterior.
 
@@ -301,7 +308,8 @@ La pantalla inicial de inicio de sesión tiene la facultad de poder crear nuevos
 
 Si se requiere acceder a está pantalla es través de la pantalla inicial, elegir la opción de Acceso ciudadano y en la pantalla de inicio de sesión elegir la opción de registrarse. 
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.010.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/d49eaaf9-2746-4b23-afe4-3a594a1d668b)
+
 
 Un ciudadano no requerirá información personal ya que hoy en día existen leyes que protegen a las personas como la Ley Federal de Datos personales y en las cuales no es necesario reportar algún problema o solicitar alguna información si eres un ciudadano.
 
@@ -309,22 +317,26 @@ Es muy importante que cuando elijas una contraseña o password no lo olvides y p
 
 **Regresar**. – En esta última opción te permite volver al menú inicial donde solicitamos el acceso que se desee a los diferentes usuarios:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.011.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/36006915-db24-4c1c-8822-463df3c46176)
+
 
 #### Interfaz inicial de ciudadano
 En esta interfaz un ciudadano puede crear solicitudes de información, reportar un problema al municipio, ver sus solicitudes, así como su status y ver sus reportes de problemas así como el estado actual si finalizado o no.
 
 Para acceder a esta pantalla es a través de la ruta Acceso Ciudadano, e iniciar sesión como ciudadano:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.012.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/5aadf9c1-3a31-4f59-aa45-8b60a1dd04cd)
+
 #### Generar un reporte de un problema 
 Para que un ciudadano pueda generar los reportes es necesario acceder esta opción la cual es a través de través de la ruta Acceso Ciudadano, e iniciar sesión como ciudadano y finalmente la opción Generar un reporte:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.013.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/e699ad5f-0774-449a-ad49-eae5ecb079fc)
+
 
 Una vez dentro se visualizarán opciones para capturar un reporte:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.014.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/8a2bacd2-382d-4350-8185-3b5bff2ec528)
+
 
 Como se puede observar se agrego funcionalidad de subir una imagen en la cual se puede evidenciar el problema a reportar, incluso se pueden subir archivos por los que se pueden subir documentos con más imágenes o alguna otra información relevante, como mejor descripción del problema etc.
 
@@ -334,11 +346,13 @@ Realizar una Solicitud de Información
 
 Los ciudadanos también tienen la opción de realizar solicitudes de información sobre diversos temas, como regulaciones municipales, eventos comunitarios o programas de gobierno. Estas solicitudes se gestionan de manera eficiente y transparente a través del sistema. Para acceder esta opción la cual es a través de través de la ruta de Acceso Ciudadano, e iniciar sesión como ciudadano y finalmente la opción **Realizar una Solicitud de Información**:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.015.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/fbd73043-ad83-4eb4-8b3f-6a162d383f27)
+
 
 Una vez dentro de dicha opción nos mostrará la siguiente pantalla:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.016.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/d87a6f0e-a523-4341-b9c1-8c0b1658a567)
+
 
 Como se puede observar se cuenta con el titulo y descripción de la solicitud de información también con la opción de agregar un archivo o imagen por si es necesario.
 
@@ -350,11 +364,13 @@ Gestión de Avances: Una vez que se ha realizado un reporte o una solicitud, el 
 
 Para acceder esta opción la cual es a través de la ruta de Acceso Ciudadano, e iniciar sesión como ciudadano y finalmente la opción **Ver mis solicitudes realizadas**:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.017.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/93b42aeb-b47f-40c3-84f8-c961c5d554d3)
+
 
 Dentro de esta opción se puede ver si se ha tenido algún avance o no:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.018.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/c7ec9a75-f6f0-4590-975b-6a1938c6dfcb)
+
 
 Como se puede observar si no ha sido respondida nos mostrara que aún no ha tomado ningún funcionario y la respuesta estará vacía. En el código solo se programó ver el identificador del funcionario, pero si se solicita se agregara el nombre o lo que se requiera.
 
@@ -362,11 +378,13 @@ Ver mis reportes realizados
 
 Para ver si mis reportes de problemas ya han sido respondidos debo entrar en esta opción. Para acceder esta opción la cual es a través de la ruta de Acceso Ciudadano, e iniciar sesión como ciudadano y finalmente la opción **Ver mis reportes realizados**:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.019.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/91a59178-0dc3-4060-bea4-52ff1498d3b0)
+
 
 Una vez dentro se pueden observar todo el seguimiento que han dado los funcionarios a mis peticiones como se muestra a continuación:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.020.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/6c7980e1-330c-41ac-abdc-5524d199fc8a)
+
 
 En esta opción ya se cuenta con un avance sin embargo se cuentan con errores como corregir y escribir el nombre del funcionario en el avance realizado
 ### <a name="_toc144312472"></a>Funcionario
@@ -374,47 +392,56 @@ Los usuarios con el rol de funcionario pueden acceder a la sección reservada pa
 #### Iniciar sesión como funcionario:
 La pantalla inicial de inicio de sesión solo es posible elegir usuario y contraseña, ya que la creación de usuarios funcionarios es a través del administrador del sistema, a modo que se solicite un cambio futuramente. El diseño de esta interfaz es muy sencillo y se muestra a continuación
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.021.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/d2f6e3c3-3b36-4030-bfae-3823797e8974)
+
 #### Interfaz inicial de funcionario
 En esta interfaz un funcionario ver los reportes de la ciudadanía y ahí mismo contestarlos y resolverlos, también puede ver la lista de solicitudes de información, así como la contestación de las mismas y por último ver reportes por fecha. Esta interfaz quedo demasiado limitada por él hecho de que se recorto los tiempos de entrega del sistema. Para acceder a esta pantalla es a través de la ruta de Acceso funcionario, e iniciar sesión como funcionario: 
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.022.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/ccb8b598-1c26-406f-9f9b-6b6ad6aedf1e)
+
 
 Ver reportes de la ciudadanía
 
 En esta interfaz, los funcionarios tienen la capacidad de visualizar los reportes de problemas presentados por la ciudadanía. La pantalla muestra una lista de los reportes disponibles, cada uno con su título, descripción, estado actual, dirección, entre otros datos como se muestra en la siguiente imagen. Esta interfaz brinda una vista general de los problemas, lo que permite a los funcionarios priorizar y abordar los casos de manera efectiva. Para acceder a esta pantalla es a través de la ruta de Acceso funcionario, e iniciar sesión como funcionario: y entrar en la opción **ver reportes de la ciudadanía:**
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.023.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/72686dc4-f585-47fa-a77a-37b5ba2d4dd2)
+
 
 En esta ventana a su vez se pueden ver los reportes finalizados si uno se dirige más abajo:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.024.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/85f5313f-3a38-4fde-88ed-52b8da6547ef)
+
 
 Dar respuesta a un problema reportado por el usuario
 
 Para poder atender los reportes de los ciudadanos es a través de la ruta de Acceso funcionario, e iniciar sesión como funcionario: y entrar en la opción ver reportes de la ciudadanía y elegir la opción **dar respuesta** en el problema reportado elegido**:**
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.025.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/a0bd43c1-a667-4bec-8c57-7ce807f872ca)
+
 
 Aquí el funcionario se podrá concentrar más claro en el problema y podrá dar una respuesta en el campo Responder de la parte inferior. En caso de que solo quiera comentar un avance o que esta en proceso el funcionario no debe activar la opción de finalizado. En caso de que quiera ver los avances de ese problema en la parte inferior se muestran los avances:
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.026.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/02ed637f-b20a-4553-9b4b-9d60985dc683)
+
 
 Listas de solicitudes de información
 
 En esta interfaz, los funcionarios pueden acceder a una lista de todas las solicitudes de información presentadas por la ciudadanía. Cada solicitud se muestra con su título, estado actual y fecha de creación. Al seleccionar una solicitud específica, los funcionarios pueden ver más detalles, como la descripción de la solicitud, cualquier archivo adjunto y los comentarios proporcionados por la ciudadanía. Esta interfaz ayuda a los funcionarios a gestionar y responder a las solicitudes de información de manera oportuna, lo que mejora la transparencia y la comunicación con la ciudadanía. Para acceder a esta pantalla es a través de la ruta de Acceso funcionario, e iniciar sesión como funcionario y entrar en la opción **Listas de solicitudes de información:**
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.027.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/9456323a-611e-434c-91e9-a21e4327d42b)
+
 
 Al igual que los reportes también viendo cada una de las solicitudes se puede dar respuesta de manera individual. Al final se mostrarán todas las solicitudes que ya han sido respondidas.
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.028.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/85a24b3d-fca7-4bc6-930b-b1c9f54af4d2)
+
 
 Dar respuesta a una solicitud de información
 
 Para poder responder las solicitudes de información de los ciudadanos es a través de la ruta de Acceso funcionario, e iniciar sesión como funcionario: y entrar en la opción de listas de solicitudes de información y elegir la opción **dar respuesta** en la solicitud de preferencia del funcionario o que considere de mayor relevancia ya sea por tiempo u otros factores**:**
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.029.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/7cbf49cf-3fbc-4a51-85f4-98eca9e292d2)
+
 
 En esta ventana se podrá responder en el campo inferior a la solicitud y finalmente guardar respuesta. En caso de información no hay avance acerca de ella por que al dar respuesta se da la información solicitada.
 
@@ -424,7 +451,8 @@ En esta interfaz, los funcionarios pueden filtrar y visualizar los reportes de p
 
 Por falta de tiempo no fue posible agregar funciones adicionales sin embargo se pretende que con estas interfaces administrar de manera eficiente los problemas y solicitudes presentados por la ciudadanía, facilitando una respuesta y solución más rápida y efectiva.
 
-![](Aspose.Words.fb195606-d9a7-49a0-8c88-19f1c2d7ab3c.030.png)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/3501979e-bbd8-4815-8dec-6ee3bbcc93fd)
+
 
 
 Beneficios del Sistema 
