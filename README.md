@@ -255,10 +255,12 @@ Relaciones:
 
 ![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/b1e38770-90fb-4ae3-8bf9-616c8d8bb7ca)
 
-
-## <a name="_toc144312467"></a>**Diseño de Pantallas y Documentación en Ausencia de Prototipo: Avance hacia una Interfaz Finalizada.**
-
 [Regresar a tabla de contenido](#_tabladecontenido)
+## <a name="_toc144312467"></a>**Diseño de Pantallas y Documentación en Ausencia de Prototipo: 
+
+Avance hacia una Interfaz Finalizada.**
+
+
 #### Descripción:
 En el proceso de desarrollo del sistema de comunicación ciudadana y gestión de servicios municipales, se ha optado por un enfoque de diseño de pantallas y documentación en lugar de crear un prototipo inicial. Esta decisión ha sido tomada considerando diversos factores que han influido en el diseño del sistema web. Sin embargo en caso de necesitar observar su diseño puedes dirigirte directamente a la opción de manual del sistema.
 
