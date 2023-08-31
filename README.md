@@ -7,9 +7,9 @@
 # <a name="_toc144312454"></a>**Por: Jesús Antonio Gutiérrez Aguilar**
 
 ##
-
+<a name="_tabladecontenido"></a><a name="_tabladecontenido"></a>
 # Tabla de contenido
-`    `[Portada	1](#_toc144312451)
+[Portada	1](#_toc144312451)
 
 [Agradecimiento	2](#_toc144312455)
 
@@ -75,6 +75,7 @@ Una vez más, le extendemos nuestro más sincero agradecimiento por todo lo que 
 Con gratitud y admiración,
 
 Jesús Antonio Gutiérrez Aguilar
+[Regresar a tabla de contenido] (#_tabladecontenido)
 ##
 
 
