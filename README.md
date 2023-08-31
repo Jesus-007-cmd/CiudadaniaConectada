@@ -84,6 +84,8 @@ Jesús Antonio Gutiérrez Aguilar
 
 ## <a name="_toc144312456"></a>**Introducción**
 En cualquier sociedad, la relación entre la ciudadanía y el gobierno es fundamental para garantizar un funcionamiento eficiente y una mejora continua de los servicios municipales. Sin embargo, a menudo surgen desafíos en la comunicación y coordinación entre ambas partes. Problemas en los servicios municipales, como la recolección irregular de basura, fallas en el alumbrado público, fugas de agua y baches en las calles, son situaciones que impactan directamente en la calidad de vida de los ciudadanos y la imagen de la ciudad.
+
+[Regresar a tabla de contenido](#_tabladecontenido)
 ### <a name="_toc144312457"></a>Problemas en los Servicios Municipales: 
 
 1\. Recolección Irregular de Basura: La falta de un horario consistente para la recolección de basura puede llevar a la acumulación de residuos en las calles, lo que contribuye a la insalubridad y la proliferación de plagas.
