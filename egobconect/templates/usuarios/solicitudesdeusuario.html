@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="{% url 'index_usuario' %}">REGRESAR</a>
+
     <h2>Mis Solicitudes de Información</h2>
     {% if solicitudes %}
         <table class="table">
@@ -13,6 +13,7 @@
                     <th>Fecha de Creación</th>
                     <th>Última Actualización</th>
                     <th>Funcionario Responsable</th>
+                    <th>Respuesta del funcionario</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,6 +45,7 @@
                                 Aún no ha dado respuesta un funcionario
                             {% endif %}
                         </td>
+                        <td>{{ solicitud.comentario }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -51,4 +53,7 @@
     {% else %}
         <p>No tienes solicitudes de información.</p>
     {% endif %}
+    <a href="{% url 'index_usuario' %}" class="btn btn-dark" style="align-items: center; text-align: center;;">REGRESAR</a>
+    
 {% endblock %}
+

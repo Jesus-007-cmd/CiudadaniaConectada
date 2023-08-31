@@ -1,73 +1,72 @@
 {% extends "base.html" %}
-{% load static %} 
+{% load static %}
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 <div class="container">
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" class="elementosvertical">
         {% csrf_token %}
-        <a href="{% url 'index_usuario' %}">REGRESAR</a>
-        <div class="form-group">
-            {{ form.titulo.label_tag }}
-            {{ form.titulo }}
-        </div>
-        
-        <div class="cssDescripcion">
-            
-            <div class="descripcion-input">
-                <div class="descripcion-input">
-                Escribe aquí la descripción del reporte:</div> 
-                {{ form.descripcion }}
+        <div class="elementoshorizontal">
+            <div class="elementosvertical">
+                <div class="form-group">
+                    {{ form.titulo.label_tag }}
+                    {{ form.titulo }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.categoria.label_tag }}
+                    {{ form.categoria }}
+                </div>
+                <div class="form-group">
+                    {{ form.direccion.label_tag }}
+                    {{ form.direccion }}
+                </div>
+                <div class="form-group">
+                    {{ form.imagen.label_tag }}
+                    {{ form.imagen }}
+                </div>
+                <div>
+                    <button type="button" id="getLocationBtn" class="btn btn-primary">Obtener Latitud y
+                        Longitud</button>
+                    <input type="text" id="latitud" name="latitud" class="form-control" placeholder="Latitud" readonly>
+                    <input type="text" id="longitud" name="longitud" class="form-control" placeholder="Longitud"
+                        readonly>
+                </div>
             </div>
-           
-            <div class="container text-center mt-4">
-                <img src="{% static 'imagenes/ciudadania.jpg' %}" alt="Imagen Visual" style="max-width: 300px;">
+            <div class="elementosvertical">
+                <div class="cssDescripcion">
+                    <div class="descripcion-input">
+                        <div class="descripcion-input">Escribe aquí la descripción del reporte:</div>
+                        <div>
+                            {{ form.descripcion }}
+                        </div>
+                    </div>
+                </div>
+              
+
             </div>
         </div>
-
-        <div class="form-group">
-            {{ form.categoria.label_tag }}
-            {{ form.categoria }}
-        </div>
-
-        <div class="form-group">
-            {{ form.categoria.label_tag }}
-            {{ form.categoria }}
-        </div>
-
-        <div class="form-group">
-            {{ form.direccion.label_tag }}
-            {{ form.direccion }}
-        </div>
-
-        <div class="form-group">
-            {{ form.imagen.label_tag }}
-            {{ form.imagen }}
-        </div>
-
-        <button type="button" id="getLocationBtn" class="btn btn-primary">Obtener Latitud y Longitud</button>
-        <input type="text" id="latitud" name="latitud" class="form-control" placeholder="Latitud" readonly>
-        <input type="text" id="longitud" name="longitud" class="form-control" placeholder="Longitud" readonly>
-
         <div class="form-group">
             {{ form.archivo_adjunto.label_tag }}
             {{ form.archivo_adjunto }}
         </div>
-
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <a href="{% url 'index_usuario' %}" class="btn btn-dark" style="text-align: center;">REGRESAR</a>
+        </div>
     </form>
 </div>
 
 
 
 <script>
-document.getElementById("getLocationBtn").addEventListener("click", function() {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        document.getElementById("latitud").value = latitude;
-        document.getElementById("longitud").value = longitude;
+    document.getElementById("getLocationBtn").addEventListener("click", function () {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            document.getElementById("latitud").value = latitude;
+            document.getElementById("longitud").value = longitude;
+        });
     });
-});
 </script>
 {% endblock %}

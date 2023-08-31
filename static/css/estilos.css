@@ -21,11 +21,33 @@ h1 {
 
 
 }
+.elementosvertical{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+.elementoshorizontal{
+  display: flex;
+  flex-direction: row;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+  justify-content: center;
 
+}
+@media (max-width: 750px) {
+  .elementoshorizontal{
+    display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  
+  }
+}
 .descripcion-input {
 
   margin-right: 20px;
-
   text-align: center;
 }
 
@@ -203,7 +225,9 @@ table.main-table-dar-respuesta td {
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 
 /* Hasta aqui finaliza css para el admin_home*/
