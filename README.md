@@ -9,43 +9,43 @@
 ##
 <a name="_tabladecontenido"></a><a name="_tabladecontenido"></a>
 # Tabla de contenido
-[Portada	1](#_toc144312451)
+[Portada](#_toc144312451)
 
-[Agradecimiento	2](#_toc144312455)
+[Agradecimiento](#_toc144312455)
 
-[Introducción	2](#_toc144312456)
+[Introducción](#_toc144312456)
 
-[Problemas en los Servicios Municipales:	3](#_toc144312457)
+[Problemas en los Servicios Municipales:](#_toc144312457)
 
-[Cómo un Sistema de Comunicación Ciudadana Puede Ayudar:	3](#_toc144312458)
+[Cómo un Sistema de Comunicación Ciudadana Puede Ayudar:](#_toc144312458)
 
-[Estándar Open311	4](#_toc144312459)
+[Estándar Open311](#_toc144312459)
 
-[El Sistema 311:	4](#_toc144312460)
+[El Sistema 311:](#_toc144312460)
 
-[Beneficios del Estándar 311:	4](#_toc144312461)
+[Beneficios del Estándar 311:](#_toc144312461)
 
-[Comunicación Eficaz Basada en el Estándar 311:	5](#_toc144312462)
+[Comunicación Eficaz Basada en el Estándar 311:](#_toc144312462)
 
-[Ubicación en git-hub	5](#_toc144312463)
+[Ubicación en git-hub](#_toc144312463)
 
-[Modelos, descripción y relaciones de base de datos	5](#_toc144312464)
+[Modelos, descripción y relaciones de base de datos](#_toc144312464)
 
-[Descripción de las tablas	5](#_toc144312465)
+[Descripción de las tablas](#_toc144312465)
 
-[Diagrama de modelos o base de datos	8](#_toc144312466)
+[Diagrama de modelos o base de datos](#_toc144312466)
 
-[Diseño de Pantallas y Documentación en Ausencia de Prototipo: Avance hacia una Interfaz Finalizada.	9](#_toc144312467)
+[Diseño de Pantallas y Documentación en Ausencia de Prototipo: Avance hacia una Interfaz Finalizada.](#_toc144312467)
 
-[Manual del sistema	10](#_toc144312468)
+[Manual del sistema0](#_toc144312468)
 
-[Pantalla Inicial del sistema	10](#_toc144312469)
+[Pantalla Inicial del sistema](#_toc144312469)
 
-[Administrador:	11](#_toc144312470)
+[Administrador:](#_toc144312470)
 
-[Ciudadano	12](#_toc144312471)
+[Ciudadano](#_toc144312471)
 
-[Funcionario	18](#_toc144312472)
+[Funcionario](#_toc144312472)
 
 
 
