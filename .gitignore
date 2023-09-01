@@ -1,0 +1,10 @@
+# Ignorar archivos generados por IDEs y editores de código
+.vscode/
+.idea/
+*.pyc
+
+# Ignorar el archivo de entorno
+.env
+
+# Ignorar otros archivos que puedan contener información sensible
+other_sensitive_file.txt

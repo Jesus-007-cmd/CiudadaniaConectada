@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+from decouple import config
+GOOGLE_MAPS_API_KEY = config('GOOGLE_MAPS_API_KEY', default='')
+GOOGLE_CORREO_API_KEY = config('GOOGLE_CORREO_API_KEY', default='')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -154,4 +157,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'desarrollos.software.web@gmail.com'
-EMAIL_HOST_PASSWORD = 'uvfmetruvixjvrxg'
+EMAIL_HOST_PASSWORD = GOOGLE_CORREO_API_KEY

@@ -23,11 +23,6 @@
                 <hr class="divider">
                 <strong>Ubicación:</strong> {{ reporte.direccion }}<br>
                 <hr class="divider">
-                <strong>Latitud/Longitud:</strong> {{ reporte.latitud }}/{{ reporte.longitud}}<br>
-                <hr class="divider">
-            </td>
-            <td>
-
                 <strong>Fecha de Creacion:</strong> {{ reporte.fecha_creacion }}<br>
                 <hr class="divider">
                 <strong>Fecha de Ultima Actualización:</strong> {{ reporte.fecha_ultima_actualizacion }}<br>
@@ -50,6 +45,39 @@
                 {% endif %}
                 <br>
                 <hr class="divider">
+            </td>
+            <td>
+                <strong>Latitud/Longitud:</strong> {{ reporte.latitud }}/{{ reporte.longitud}}<br>
+                <hr class="divider">
+                <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&callback=initMap" async defer></script>
+                    
+                <!-- Agrega un div para el mapa -->
+                <div id="map" style="height: 400px;"></div>
+
+                <!-- Script para inicializar el mapa -->
+                <script>
+                    function initMap() {
+                        // Latitud y longitud del lugar que deseas mostrar en el mapa
+                        const latitud = {{ reporte.latitud }};
+                    const longitud = {{ reporte.longitud }};
+
+                    // Crea un objeto de mapa centrado en la ubicación especificada
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                        center: { lat: latitud, lng: longitud },
+                        zoom: 14,  // Ajusta el nivel de zoom según sea necesario
+                    });
+
+                    // Agrega un marcador en la ubicación especificada
+                    const marker = new google.maps.Marker({
+                        position: { lat: latitud, lng: longitud },
+                        map: map,
+                        title: "Ubicación del Reporte"
+                    });
+    }
+                </script>
+
+
+
             </td>
         </tr>
         <tr>
