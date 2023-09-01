@@ -47,6 +47,11 @@
 
 [Funcionario](#_toc144312472)
 
+[Nuevas mejoras al 31 de agosto del 2023](#_tocmejoras)
+[Implementación de API DE GOOGLE MAPS para encontrar la ubicación del problema reportado]
+
+
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/a2486281-1751-47e1-9ec8-da38c810afee)
 
 
 ##
@@ -522,5 +527,12 @@ Beneficios del Sistema
 
 [Regresar a tabla de contenido](#_tabladecontenido)
 
+<a name="_tabladecontenido"></a><a name="_tocmejoras"></a>
+Implementación de API DE GOOGLE MAPS para encontrar la ubicación del problema reportado
 
+Como se puede observar en la siguiente imagen como mejora al sistema se implemento la ubicación via cordenas agregadas previamente por los usuarios en caso de querer agregarlas donde se encuentra el problema:
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/a2486281-1751-47e1-9ec8-da38c810afee)
+
+
+[Regresar a tabla de contenido](#_tabladecontenido)
 
