@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 <div class="reportes_horizontal">
     <div>
-        <h1 style="color: darkblue;">Reportes por Fecha Pendientes</h1>
+        <h1 style="color: darkblue;">Reportes por fecha Pendientes</h1>
 
         {% if labels_pendientes and data_pendientes %}
         <div class="reportes_vertical">
@@ -25,7 +25,7 @@
                     data: {{ data_pendientes| safe }},
                 }]
             };
-
+ 
                 // Configuración del gráfico de reportes pendientes
                 var opciones_pendientes = {
                     responsive: true,
