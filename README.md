@@ -49,7 +49,7 @@
 
 [Nuevas mejoras al 31 de agosto del 2023](#_tocmejoras)
 [Implementación de API DE GOOGLE MAPS para encontrar la ubicación del problema reportado]
-
+[Nuevas mejoras al 2 de septiembreo del 2023 Uso de chartjs en reportes por fechas](#_tocmejoras2)
 
 ![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/a2486281-1751-47e1-9ec8-da38c810afee)
 
@@ -510,6 +510,7 @@ En esta interfaz, los funcionarios pueden filtrar y visualizar los reportes de p
 Por falta de tiempo no fue posible agregar funciones adicionales sin embargo se pretende que con estas interfaces administrar de manera eficiente los problemas y solicitudes presentados por la ciudadanía, facilitando una respuesta y solución más rápida y efectiva.
 
 ![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/3501979e-bbd8-4815-8dec-6ee3bbcc93fd)
+[Se realiza actualiación y se puede ver en este acceso] (#_tocmejoras2)
 
 [Regresar a tabla de contenido](#_tabladecontenido)
 
@@ -536,3 +537,7 @@ Como se puede observar en la siguiente imagen como mejora al sistema se implemen
 
 [Regresar a tabla de contenido](#_tabladecontenido)
 
+<a name="_tabladecontenido"></a><a name="_tocmejoras2"></a>
+Se realiza actualización de reportes por fecha, se agregan graficos con charjs y se separan los dos tipos de reportes de usuarios, en pendientes y finalizados:
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/f08ec960-3335-4e15-a9a5-92cbdf6a4d2f)
+[Regresar a tabla de contenido](#_tabladecontenido)
