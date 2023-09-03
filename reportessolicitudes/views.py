@@ -9,7 +9,9 @@ from .models import SolicitudInformacion, Open311ReporteProblema, UsuarioFuncion
 
 from django.utils import timezone
 from django.contrib import messages
+from django.db.models import Count 
 
+from django.db.models.functions import TruncDate
 
 # Inician Vistas de usuario
 class IndexUsuarioView(LoginRequiredMixin, View):
@@ -145,14 +147,41 @@ def dar_respuesta_solicitud(request, solicitud_id):
 
     return render(request, 'funcionarios/dar_respuesta_solicitud.html', {'solicitud': solicitud, 'avance_form': avance_form})
 
+
+
 @user_passes_test(es_funcionario)
 def reportes_por_fecha(request):
-    start_date = request.GET.get('start_date')
-    end_date = request.GET.get('end_date')
+    if request.method == 'GET':
+        start_date = request.GET.get('start_date')
+        end_date = request.GET.get('end_date')
+        
+        # Consulta para contar los reportes por día
+        reportes_por_dia_finalizados = Open311ReporteProblema.objects.filter(
+            fecha_creacion__range=(start_date, end_date), estatus='Finalizado')
+        reportes_por_dia_pendientes = Open311ReporteProblema.objects.filter(
+            fecha_creacion__range=(start_date, end_date), estatus='Pendiente')
+        reportes_grafico_finalizados = reportes_por_dia_finalizados.annotate(
+            fecha_dia=TruncDate('fecha_creacion')
+        ).values('fecha_dia').annotate(
+            total_reportes=Count('id')
+        ).order_by('fecha_dia')
+        reportes_grafico_pendientes = reportes_por_dia_pendientes.annotate(
+            fecha_dia=TruncDate('fecha_creacion')
+        ).values('fecha_dia').annotate(
+            total_reportes=Count('id')
+        ).order_by('fecha_dia')
+        
+        # Preparar datos para el gráfico
+        labels_finalizados = [entry['fecha_dia'].strftime('%Y-%m-%d') for entry in reportes_grafico_finalizados]
+        data_finalizados = [entry['total_reportes'] for entry in reportes_grafico_finalizados]
+        labels_pendientes = [entry['fecha_dia'].strftime('%Y-%m-%d') for entry in reportes_grafico_pendientes]
+        data_pendientes = [entry['total_reportes'] for entry in reportes_grafico_pendientes]
+      
+        
+        return render(request, 'funcionarios/reportes_por_fecha.html', {'labels_finalizados': labels_finalizados, 'data_finalizados': data_finalizados, 'reportes_por_dia_finalizados': reportes_por_dia_finalizados, 
+                                                                        'labels_pendientes': labels_pendientes, 'data_pendientes': data_pendientes, 'reportes_por_dia_pendientes': reportes_por_dia_pendientes})
     
-    reportes = Open311ReporteProblema.objects.filter(fecha_creacion__range=(start_date, end_date)).order_by('fecha_creacion')
     
-    return render(request, 'funcionarios/reportes.html', {'reportes': reportes})
 
 @user_passes_test(es_funcionario)
 def reportes_por_ciudad(request):
@@ -171,15 +200,7 @@ def reportes_por_categoria_estatus(request):
     
     return render(request, 'funcionarios/reportes.html', {'reportes': reportes})
 
-@user_passes_test(es_funcionario)
-def reportes_por_fecha(request):
-    if request.method == 'GET':
-        start_date = request.GET.get('start_date')
-        end_date = request.GET.get('end_date')
-        
-        reportes = Open311ReporteProblema.objects.filter(fecha_creacion__range=(start_date, end_date)).order_by('fecha_creacion')
-        
-        return render(request, 'funcionarios/reportes_por_fecha.html', {'reportes': reportes})
+
 
 #---------------Hasta aqui finalizan las vistas de funcionarios:---------------------
 #-------------------------------------------------------------------------------------

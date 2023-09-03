@@ -21,13 +21,15 @@ h1 {
 
 
 }
-.elementosvertical{
+
+.elementosvertical {
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
 }
-.elementoshorizontal{
+
+.elementoshorizontal {
   display: flex;
   flex-direction: row;
   padding-top: 30px;
@@ -36,15 +38,17 @@ h1 {
   justify-content: center;
 
 }
+
 @media (max-width: 750px) {
-  .elementoshorizontal{
+  .elementoshorizontal {
     display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+
   }
 }
+
 .descripcion-input {
 
   margin-right: 20px;
@@ -184,7 +188,7 @@ table.main-table-dar-respuesta td {
   padding: 15px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  place-items:  center;
+  place-items: center;
   /* grid-gap: 10px;*/
   /*  grid-auto-rows: minmax(100px, auto);*/
 }
@@ -236,35 +240,88 @@ table.main-table-dar-respuesta td {
 .piebasehtml {
   background-color: #003366;
   color: white;
-  padding: 10px ;
-  text-align: center; /* Centra el contenido horizontalmente */
+  padding: 10px;
+  text-align: center;
+  /* Centra el contenido horizontalmente */
   width: 100%;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  
+
 }
 
 .displayflexbasefooter {
   display: flex;
   flex-direction: row;
-align-items: center;
-justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media (max-width: 740px) {
   .displayflexbasefooter {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    justify-items: center; 
+    justify-items: center;
   }
 }
 
 @media (max-width: 500px) {
   .displayflexbasefooter {
     display: flex;
-  flex-direction: column;
+    flex-direction: column;
   }
 }
 
 
 /*fin de estilos para base.html */
+
+/*Aqui estilos para reportes por fecha y tal vez otros */
+
+.reportes_vertical {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+color:#143180;
+
+}
+
+.reportes_horizontal {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  color:#143180;
+  align-items:baseline;
+  
+}
+
+@media (max-width: 1990px) {
+  .reportes_horizontal div {
+    
+    width: 90%;
+  }
+}
+@media (max-width: 1790px) {
+  .reportes_horizontal div {
+
+    width: 80%;
+  }
+}
+@media (max-width: 1390px) {
+  .reportes_horizontal div {
+
+    width: 80%;
+  }
+}
+@media (max-width: 1130px) {
+  .reportes_horizontal  {
+
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  color:#143180;
+  }
+}
+
+/*Finaliza reportes por fecha y tal vez otros*/

@@ -2,64 +2,145 @@
 {% load static %}
 
 {% block content %}
-<h1>Reportes por Fecha</h1>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<div class="reportes_horizontal">
+    <div>
+        <h1 style="color: darkblue;">Reportes por Fecha Pendientes</h1>
 
-<form method="GET">
-    <label for="start_date">Fecha de inicio:</label>
-    <input type="date" name="start_date" required>
-    <label for="end_date">Fecha de fin:</label>
-    <input type="date" name="end_date" required>
-    <button type="submit">Generar Reportes</button>
-</form>
+        {% if labels_pendientes and data_pendientes %}
+        <div class="reportes_vertical">
 
-{% if reportes %}
-<h2>Resultados:</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Descripción</th>
-            <th>Categoría</th>
-            <th>Estado</th>
-            <th>Ubicación</th>
-            <th>Fecha de Creación</th>
-            <th>Última Actualización</th>
-            <th>Imagen</th>
-            <th>Archivo Adjunto</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for reporte in reportes %}
-        <tr>
-            <td>{{ reporte.titulo }}</td>
-            <td>{{ reporte.descripcion }}</td>
-            <td>{{ reporte.categoria }}</td>
-            <td>{{ reporte.estatus }}</td>
-            <td>{{ reporte.direccion }}</td>
-            <td>{{ reporte.fecha_creacion }}</td>
-            <td>{{ reporte.fecha_ultima_actualizacion }}</td>
-            <td>
-                {% if reporte.imagen %}
-                <a href="{{ reporte.imagen.url }}" target="_blank">
-                    <img src="{{ reporte.imagen.url }}" alt="Imagen" style="max-width: 100px; max-height: 100px;">
-                </a>
-                {% else %}
-                No se agrego imagen
-                {% endif %}
-            </td>
-            <td>
-                {% if reporte.archivo_adjunto %}
-                <a href="{{ reporte.archivo_adjunto.url }}">Descargar</a>
-                {% else %}
-                No disponible
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<div style="text-align: center; padding-bottom: 20px;">
-    <a href="{% url 'funcionario' %}" class="blue-button">Volver</a>
+            <div style="height: 400px;">
+                <!-- Canvas donde se mostrará el gráfico -->
+                <canvas id="miGraficoPendientes"></canvas>
+            </div>
+            <script>
+                // Datos para el gráfico de reportes pendientes
+                var datos_pendientes = {
+                    labels: {{ labels_pendientes| safe }},
+                datasets: [{
+                    label: "Reportes por Día Pendientes",
+                    backgroundColor: "red",
+                    data: {{ data_pendientes| safe }},
+                }]
+            };
+
+                // Configuración del gráfico de reportes pendientes
+                var opciones_pendientes = {
+                    responsive: true,
+                    maintainAspectRatio: false
+                };
+
+                // Crear el gráfico de reportes pendientes
+                var ctx_pendientes = document.getElementById("miGraficoPendientes").getContext("2d");
+                var miGraficoPendientes = new Chart(ctx_pendientes, {
+                    type: 'bar',
+                    data: datos_pendientes,
+                    options: opciones_pendientes
+                });
+            </script>
+        </div>
+        {% endif %}
+
+        <div class="reportes_vertical">
+            {% if reportes_por_dia_pendientes %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Descripción</th>
+                        <th>Categoría</th>
+                        <th>Fecha de Creación</th>
+                        <th>Última Actualización</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reportep in reportes_por_dia_pendientes %}
+                    <tr>
+                        <td>{{ reportep.titulo }}</td>
+                        <td>{{ reportep.descripcion }}</td>
+                        <td>{{ reportep.categoria }}</td>
+                        <td>{{ reportep.fecha_creacion }}</td>
+                        <td>{{ reportep.fecha_ultima_actualizacion }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div style="text-align: center; padding-bottom: 20px;">
+                <a href="{% url 'funcionario' %}" class="blue-button">Volver</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="reportes_vertical">
+        <h1 style="color: darkblue;">Reportes por Fecha Finalizados</h1>
+
+        {% if labels_finalizados and data_finalizados %}
+        <div class="reportes_vertical">
+            <div style="height: 400px;">
+                <!-- Canvas donde se mostrará el gráfico -->
+                <canvas id="miGraficoFinalizados"></canvas>
+            </div>
+            <script>
+                // Datos para el gráfico de reportes finalizados
+                var datos_finalizados = {
+                    labels: {{ labels_finalizados| safe }},
+                datasets: [{
+                    label: "Reportes por Día Finalizados",
+                    backgroundColor: "blue",
+                    data: {{ data_finalizados| safe }},
+                }]
+            };
+
+                // Configuración del gráfico de reportes finalizados
+                var opciones_finalizados = {
+                    responsive: true,
+                    maintainAspectRatio: false
+                };
+
+                // Crear el gráfico de reportes finalizados
+                var ctx_finalizados = document.getElementById("miGraficoFinalizados").getContext("2d");
+                var miGraficoFinalizados = new Chart(ctx_finalizados, {
+                    type: 'bar',
+                    data: datos_finalizados,
+                    options: opciones_finalizados
+                });
+            </script>
+        </div>
+        {% endif %}
+
+        <div class="reportes_vertical">
+            {% if reportes_por_dia_finalizados %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Descripción</th>
+                        <th>Categoría</th>
+                        <th>Fecha de Creación</th>
+                        <th>Última Actualización</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reporte in reportes_por_dia_finalizados %}
+                    <tr>
+                        <td>{{ reporte.titulo }}</td>
+                        <td>{{ reporte.descripcion }}</td>
+                        <td>{{ reporte.categoria }}</td>
+                        <td>{{ reporte.fecha_creacion }}</td>
+                        <td>{{ reporte.fecha_ultima_actualizacion }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div style="text-align: center; padding-bottom: 20px;">
+                <a href="{% url 'funcionario' %}" class="blue-button">Volver</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+
 </div>
-{% endif %}
 {% endblock %}
