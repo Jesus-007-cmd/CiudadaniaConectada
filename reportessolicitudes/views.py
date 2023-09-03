@@ -172,14 +172,22 @@ def reportes_por_fecha(request):
         ).order_by('fecha_dia')
         
         # Preparar datos para el gráfico
-        labels_finalizados = [entry['fecha_dia'].strftime('%Y-%m-%d') for entry in reportes_grafico_finalizados]
-        data_finalizados = [entry['total_reportes'] for entry in reportes_grafico_finalizados]
-        labels_pendientes = [entry['fecha_dia'].strftime('%Y-%m-%d') for entry in reportes_grafico_pendientes]
-        data_pendientes = [entry['total_reportes'] for entry in reportes_grafico_pendientes]
-      
+        labels_finalizados = [entry['fecha_dia'].strftime('%Y-%m-%d') for 
+                              entry in reportes_grafico_finalizados]
+        data_finalizados = [entry['total_reportes'] for entry in 
+                            reportes_grafico_finalizados]
+        labels_pendientes = [entry['fecha_dia'].strftime('%Y-%m-%d') for 
+                             entry in reportes_grafico_pendientes]
+        data_pendientes = [entry['total_reportes'] for entry in 
+                           reportes_grafico_pendientes]
         
-        return render(request, 'funcionarios/reportes_por_fecha.html', {'labels_finalizados': labels_finalizados, 'data_finalizados': data_finalizados, 'reportes_por_dia_finalizados': reportes_por_dia_finalizados, 
-                                                                        'labels_pendientes': labels_pendientes, 'data_pendientes': data_pendientes, 'reportes_por_dia_pendientes': reportes_por_dia_pendientes})
+        
+        return render(request, 'funcionarios/reportes_por_fecha.html', 
+                      {'labels_finalizados': labels_finalizados, 'data_finalizados': 
+                       data_finalizados, 'reportes_por_dia_finalizados': 
+                       reportes_por_dia_finalizados, 'labels_pendientes': 
+                       labels_pendientes, 'data_pendientes': data_pendientes, 
+                       'reportes_por_dia_pendientes': reportes_por_dia_pendientes})
     
     
 
