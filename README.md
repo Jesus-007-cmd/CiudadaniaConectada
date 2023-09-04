@@ -551,15 +551,25 @@ Integración con otros componentes de Django: Puede integrar fácilmente su API 
 En resumen, la REST API de Django es una excelente elección para crear el backend de su aplicación web debido a su facilidad de uso, seguridad, escalabilidad y la gran comunidad de desarrollo que lo respalda. Le permite construir una API RESTful sólida y segura que puede ser consumida por aplicaciones web, aplicaciones móviles y otros servicios.
 [Regresar a tabla de contenido](#_tabladecontenido)
 <a name="_restapirutas"></a>
+
 **RUTAS DE REST API de Django,**
+
 http://127.0.0.1:8000/reportessolicitudes/api/reportes-problema/
+
 http://127.0.0.1:8000/reportessolicitudes/api/reportes-problema/<int:pk>/
+
 http://127.0.0.1:8000/api/solicitudes-informacion/
+
 http://127.0.0.1:8000/api/solicitudes-informacion/<int:pk>/
+
 http://127.0.0.1:8000/api/avances-reporte/
+
 http://127.0.0.1:8000/api/avances-reporte/<int:pk>/
+
 http://127.0.0.1:8000/api/usuarios-funcionario/
+
 http://127.0.0.1:8000/api/usuarios-funcionario/<int:pk>/
+
 
 Es importante que para validar las rutas escribir la diagonal al final.
 [Regresar a tabla de contenido](#_tabladecontenido)
