@@ -55,7 +55,7 @@
 [Implementación de API DE GOOGLE MAPS para encontrar la ubicación del problema reportado]
 
 23.-[Nuevas mejoras al 2 de septiembreo del 2023 Uso de chartjs en reportes por fechas](#_tocmejoras2)
-![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/a2486281-1751-47e1-9ec8-da38c810afee)
+
 
 
 ##
