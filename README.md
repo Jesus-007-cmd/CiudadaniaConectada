@@ -9,52 +9,52 @@
 ##
 <a name="_tabladecontenido"></a><a name="_tabladecontenido"></a>
 # Tabla de contenido
-[Portada](#_toc144312451)
+1-[Portada](#_toc144312451)
 
-[Agradecimiento](#_toc144312455)
+2.-[Agradecimiento](#_toc144312455)
 
-[Introducción](#_toc144312456)
+3.-[Introducción](#_toc144312456)
 
-[Problemas en los Servicios Municipales:](#_toc144312457)
+4-[Problemas en los Servicios Municipales:](#_toc144312457)
 
-[Cómo un Sistema de Comunicación Ciudadana Puede Ayudar:](#_toc144312458)
+5-[Cómo un Sistema de Comunicación Ciudadana Puede Ayudar:](#_toc144312458)
 
-[Estándar Open311](#_toc144312459)
+6.-[Estándar Open311](#_toc144312459)
 
-[El Sistema 311:](#_toc144312460)
+7.-[El Sistema 311:](#_toc144312460)
 
-[Beneficios del Estándar 311:](#_toc144312461)
+8.-[Beneficios del Estándar 311:](#_toc144312461)
 
-[Comunicación Eficaz Basada en el Estándar 311:](#_toc144312462)
+9.-[Comunicación Eficaz Basada en el Estándar 311:](#_toc144312462)
 
-[Ubicación en git-hub](#_toc144312463)
+10.-[Ubicación en git-hub](#_toc144312463)
 
-[Modelos, descripción y relaciones de base de datos](#_toc144312464)
+11.-[Modelos, descripción y relaciones de base de datos](#_toc144312464)
 
-[Descripción de las tablas](#_toc144312465)
+12.-[Descripción de las tablas](#_toc144312465)
 
-[Diagrama de modelos o base de datos](#_toc144312466)
+13.-[Diagrama de modelos o base de datos](#_toc144312466)
 
-[Diseño de Pantallas y Documentación en Ausencia de Prototipo: Avance hacia una Interfaz Finalizada.](#_toc144312467)
+14.-[Diseño de Pantallas y Documentación en Ausencia de Prototipo: Avance hacia una Interfaz Finalizada.](#_toc144312467)
 
-[Manual del sistema0](#_toc144312468)
+15.-[Manual del sistema0](#_toc144312468)
 
-[Pantalla Inicial del sistema](#_toc144312469)
+16.-[Pantalla Inicial del sistema](#_toc144312469)
 
-[Administrador:](#_toc144312470)
+17.-[Administrador:](#_toc144312470)
 
-[Ciudadano](#_toc144312471)
+18.-[Ciudadano](#_toc144312471)
 
-[Funcionario](#_toc144312472)
+19.-[Funcionario](#_toc144312472)
 
-[REST API Se implmenta RESTAPI DE DJANGO para backend, se realiza descipción y después rutas](#_restapidescripcion)
+20.-[REST API Se implmenta RESTAPI DE DJANGO para backend, se realiza descipción y después rutas](#_restapidescripcion)
 
-[REST API Se detallan todas las rutas](#_restapirutas)
+21.-[REST API Se detallan todas las rutas](#_restapirutas)
 
-[Nuevas mejoras al 31 de agosto del 2023](#_tocmejoras)
+22.-[Nuevas mejoras al 31 de agosto del 2023](#_tocmejoras)
 [Implementación de API DE GOOGLE MAPS para encontrar la ubicación del problema reportado]
-[Nuevas mejoras al 2 de septiembreo del 2023 Uso de chartjs en reportes por fechas](#_tocmejoras2)
 
+23.-[Nuevas mejoras al 2 de septiembreo del 2023 Uso de chartjs en reportes por fechas](#_tocmejoras2)
 ![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/a2486281-1751-47e1-9ec8-da38c810afee)
 
 
