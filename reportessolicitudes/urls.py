@@ -2,8 +2,19 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-from .views import AgregarReporte, AgregarSolicitud, IndexUsuarioView
-
+from .views import (
+    AgregarReporte, 
+    AgregarSolicitud, 
+    IndexUsuarioView,
+    ReporteProblemaListView,
+    ReporteProblemaDetailView,
+    SolicitudInformacionListView,
+    SolicitudInformacionDetailView,
+    UsuarioFuncionarioListView,
+    UsuarioFuncionarioDetalleView,
+    AvanceReporteListaView, 
+    AvanceReporteDetalleView
+)
 
 urlpatterns = [
     
@@ -25,5 +36,16 @@ urlpatterns = [
     path('reportes/categoria-estatus/', views.reportes_por_categoria_estatus, name='reportes_por_categoria_estatus'),
     #Ruta para admin
     path('admin_home/', views.admin_home, name='admin_home'),
+    
+    #Rutas serialización
+    path('api/reportes-problema/', ReporteProblemaListView.as_view(), name='reportes-problema-lista'),
+    path('api/reportes-problema/<int:pk>/', ReporteProblemaDetailView.as_view(), name='reporte-problema-detalle'),
+    path('api/solicitudes-informacion/', SolicitudInformacionListView.as_view(), name='solicitudes-informacion-lista'),
+    path('api/solicitudes-informacion/<int:pk>/', SolicitudInformacionDetailView.as_view(), name='solicitud-informacion-detalle'),
+    path('api/avances-reporte/', AvanceReporteListaView.as_view(), name='avance-reporte-lista'),
+    path('api/avances-reporte/<int:pk>/', AvanceReporteDetalleView.as_view(), name='avance-reporte-detalle'),
+    path('api/usuarios-funcionario/', UsuarioFuncionarioListView.as_view(), name='usuario-funcionario-lista'),
+    path('api/usuarios-funcionario/<int:pk>/', UsuarioFuncionarioDetalleView.as_view(), name='usuario-funcionario-detalle'),
+
 ]
 

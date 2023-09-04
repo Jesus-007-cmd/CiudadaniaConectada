@@ -5,13 +5,26 @@ from .forms import ReporteForm, SolicitudForm, AvanceReporteForm, AvanceSolicitu
 
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .models import SolicitudInformacion, Open311ReporteProblema, UsuarioFuncionario
+from .models import SolicitudInformacion, Open311ReporteProblema, UsuarioFuncionario,AvanceReporte
 
 from django.utils import timezone
 from django.contrib import messages
 from django.db.models import Count 
 
 from django.db.models.functions import TruncDate
+from rest_framework import generics
+from .serializers import (
+    ReporteProblemaSerializer, 
+    SolicitudInformacionSerializer, 
+    UsuarioFuncionarioSerializer, 
+    AvanceReporteSerializer)
+
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework import status
+
+from rest_framework.views import APIView
+from django.http import Http404
 
 # Inician Vistas de usuario
 class IndexUsuarioView(LoginRequiredMixin, View):
@@ -243,3 +256,270 @@ def admin_home(request):
     funcionarios = UsuarioFuncionario.objects.all()  # Obtén la lista de funcionarios existentes
     
     return render(request, template_name, {'form': form, 'funcionarios': funcionarios})
+
+"""Se crean las vistas basadas  en clases para los modelos serializadas """
+class ReporteProblemaListView(generics.ListCreateAPIView):
+    queryset = Open311ReporteProblema.objects.all()
+    serializer_class = ReporteProblemaSerializer
+
+class ReporteProblemaDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Open311ReporteProblema.objects.all()
+    serializer_class = ReporteProblemaSerializer
+
+class SolicitudInformacionListView(generics.ListCreateAPIView):
+    queryset = SolicitudInformacion.objects.all()
+    serializer_class = SolicitudInformacionSerializer
+
+class SolicitudInformacionDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = SolicitudInformacion.objects.all()
+    serializer_class = SolicitudInformacionSerializer
+
+class UsuarioFuncionarioListView(generics.ListCreateAPIView):
+    queryset = UsuarioFuncionario.objects.all()
+    serializer_class = UsuarioFuncionarioSerializer
+
+class UsuarioFuncionarioDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = UsuarioFuncionario.objects.all()
+    serializer_class = UsuarioFuncionarioSerializer
+
+# Vista para listar todos los avances de reporte
+class AvanceReporteListaView(generics.ListCreateAPIView):
+    queryset = AvanceReporte.objects.all()
+    serializer_class = AvanceReporteSerializer
+
+# Vista para ver, actualizar o eliminar un avance de reporte específico
+class AvanceReporteDetalleView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = AvanceReporte.objects.all()
+    serializer_class = AvanceReporteSerializer
+    
+    
+ #*/*/*/*/*LO SIGUIENTE PARA OPEN311REPORTEPROBLEMA */*/*/*/*/*/*/*/*/   
+    # ListView con get y post
+# Vista para listar y crear reportes de problemas
+class ReporteProblemaListView(APIView):
+    serializer_class = ReporteProblemaSerializer
+
+    # Método para obtener el queryset de los reportes de problemas
+    def get_queryset(self):
+        return Open311ReporteProblema.objects.all()
+
+    # Método GET para obtener una lista de reportes de problemas
+    def get(self, request):
+        reportes = self.get_queryset()  # Obtenemos los reportes
+        serializer = self.serializer_class(reportes, many=True)  # Serializamos los datos
+        return Response(serializer.data)  # Devolvemos la respuesta con los datos serializados
+
+    # Método POST para crear un nuevo reporte de problema
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)  # Serializamos los datos recibidos
+        if serializer.is_valid():
+            serializer.save()  # Si son válidos, guardamos el reporte en la base de datos
+            return Response(serializer.data, status=status.HTTP_201_CREATED)  # Devolvemos una respuesta con los datos del reporte creado y código 201 (CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  # Si los datos no son válidos, devolvemos una respuesta de error con detalles de validación y código 400 (BAD REQUEST)
+
+# Vista para ver, actualizar y eliminar un reporte de problema específico
+class ReporteProblemaDetailView(APIView):
+    serializer_class = ReporteProblemaSerializer
+
+    # Método para obtener un reporte de problema por su clave primaria (ID)
+    def get_object(self, pk):
+        try:
+            return Open311ReporteProblema.objects.get(pk=pk)
+        except Open311ReporteProblema.DoesNotExist:
+            raise Http404
+
+    # Método GET para obtener los detalles de un reporte de problema por su ID
+    def get(self, request, pk):
+        reporte_problema = self.get_object(pk)
+        serializer = self.serializer_class(reporte_problema)  # Serializamos el reporte
+        return Response(serializer.data)  # Devolvemos la respuesta con los detalles serializados
+
+    # Método PUT para actualizar un reporte de problema por su ID
+    def put(self, request, pk):
+        reporte_problema = self.get_object(pk)
+        serializer = self.serializer_class(reporte_problema, data=request.data)  # Serializamos los datos recibidos y los datos actuales del reporte
+        if serializer.is_valid():
+            serializer.save()  # Si son válidos, guardamos los cambios en el reporte
+            return Response(serializer.data)  # Devolvemos una respuesta con los datos actualizados
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  # Si los datos no son válidos, devolvemos una respuesta de error con detalles de validación y código 400 (BAD REQUEST)
+
+    # Método PATCH para actualizar parcialmente un reporte de problema por su ID
+    def patch(self, request, pk):
+        reporte_problema = self.get_object(pk)
+        serializer = self.serializer_class(reporte_problema, data=request.data, partial=True)  # Serializamos los datos recibidos y los datos actuales del reporte de manera parcial
+        if serializer.is_valid():
+            serializer.save()  # Si son válidos, guardamos los cambios en el reporte
+            return Response(serializer.data)  # Devolvemos una respuesta con los datos actualizados
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  # Si los datos no son válidos, devolvemos una respuesta de error con detalles de validación y código 400 (BAD REQUEST)
+
+    # Método DELETE para eliminar un reporte de problema por su ID
+    def delete(self, request, pk):
+        reporte_problema = self.get_object(pk)
+        reporte_problema.delete()  # Eliminamos el reporte
+        return Response(status=status.HTTP_204_NO_CONTENT)  # Devolvemos una respuesta con código 204 (NO CONTENT) indicando que se ha eliminado
+    
+#*/*/*/*/*AQUI FINALIZA PARA MODELO OPEN311REPORTEPROBLEMA */*/*/*/*/*/*/*/*/
+#*/*/*/*/*LO SIGUIENTE PARA MODELO  SOLICITUDDEINFORMACION */*/*/*/*/*/*/*/*/
+
+# Vista para listar y crear solicitudes de información
+class SolicitudInformacionListView(APIView):
+    serializer_class = SolicitudInformacionSerializer
+
+    # Método para obtener el queryset de las solicitudes de información
+    def get_queryset(self):
+        return SolicitudInformacion.objects.all()
+
+    # Método GET para obtener una lista de solicitudes de información
+    def get(self, request):
+        solicitudes = self.get_queryset()  # Obtenemos las solicitudes
+        serializer = self.serializer_class(solicitudes, many=True)  # Serializamos los datos
+        return Response(serializer.data)  # Devolvemos la respuesta con los datos serializados
+
+    # Método POST para crear una nueva solicitud de información
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)  # Serializamos los datos recibidos
+        if serializer.is_valid():
+            serializer.save()  # Si son válidos, guardamos la solicitud en la base de datos
+            return Response(serializer.data, status=status.HTTP_201_CREATED)  # Devolvemos una respuesta con los datos de la solicitud creada y código 201 (CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  # Si los datos no son válidos, devolvemos una respuesta de error con detalles de validación y código 400 (BAD REQUEST)
+    
+    
+class SolicitudInformacionDetailView(APIView):
+        # Obtener un objeto de SolicitudInformacion por su clave primaria (ID)
+    def get_object(self, pk):
+        try:
+            return SolicitudInformacion.objects.get(pk=pk)
+        except SolicitudInformacion.DoesNotExist:
+            raise Http404
+
+    # Obtener los detalles de una Solicitud de Información por su ID
+    def get(self, request, pk):
+        solicitud = self.get_object(pk)
+        serializer = SolicitudInformacionSerializer(solicitud)
+        return Response(serializer.data)
+
+    # Actualizar una Solicitud de Información por su ID (PUT)
+    def put(self, request, pk):
+        solicitud = self.get_object(pk)
+        serializer = SolicitudInformacionSerializer(solicitud, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # Actualizar parcialmente una Solicitud de Información por su ID (PATCH)
+    def patch(self, request, pk):
+        solicitud = self.get_object(pk)
+        serializer = SolicitudInformacionSerializer(solicitud, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # Eliminar una Solicitud de Información por su ID
+    def delete(self, request, pk):
+        solicitud = self.get_object(pk)
+        solicitud.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    #*/*/*/*/*FINALIZA LO DE  MODELO  SOLICITUDDEINFORMACION */*/*/*/*/*/*/*/*/
+    
+    #*/*/*/*/*LO SIGUIENTE PARA MODELO  USUARIOFUNCIONARIO */*/*/*/*/*/*/*/*/
+class UsuarioFuncionarioListView(APIView):
+    def get(self, request):
+        # Obtener todos los usuarios funcionarios con el filtro deseado
+        usuarios_funcionarios = UsuarioFuncionario.objects.all()  # Puedes aplicar filtros aquí si es necesario
+        serializer = UsuarioFuncionarioSerializer(usuarios_funcionarios, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = UsuarioFuncionarioSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class UsuarioFuncionarioDetalleView(APIView):
+    def get_object(self, pk):
+        try:
+            return UsuarioFuncionario.objects.get(pk=pk)
+        except UsuarioFuncionario.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk):
+        usuario_funcionario = self.get_object(pk)
+        serializer = UsuarioFuncionarioSerializer(usuario_funcionario)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        usuario_funcionario = self.get_object(pk)
+        serializer = UsuarioFuncionarioSerializer(usuario_funcionario, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request, pk):
+        usuario_funcionario = self.get_object(pk)
+        serializer = UsuarioFuncionarioSerializer(usuario_funcionario, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        usuario_funcionario = self.get_object(pk)
+        usuario_funcionario.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    #*/*/*/*/*AQUI FINALIZA PARA MODELO  USUARIOFUNCIONARIO */*/*/*/*/*/*/*/*/
+    
+    #*/*/*/*/*LO SIGUIENTE PARA MODELO  AVANCE REPORTE */*/*/*/*/*/*/*/*/
+
+class AvanceReporteListaView(APIView):
+    def get(self, request):
+        avances_reporte = AvanceReporte.objects.all()  # Puedes aplicar filtros aquí si es necesario
+        serializer = AvanceReporteSerializer(avances_reporte, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = AvanceReporteSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+   
+    
+class AvanceReporteDetalleView(APIView):
+    def get_object(self, pk):
+        try:
+            return AvanceReporte.objects.get(pk=pk)
+        except AvanceReporte.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk):
+        avance_reporte = self.get_object(pk)
+        serializer = AvanceReporteSerializer(avance_reporte)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        avance_reporte = self.get_object(pk)
+        serializer = AvanceReporteSerializer(avance_reporte, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request, pk):
+        avance_reporte = self.get_object(pk)
+        serializer = AvanceReporteSerializer(avance_reporte, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        avance_reporte = self.get_object(pk)
+        avance_reporte.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    #*/*/*/*/*AQUI FINALIZA PARA MODELO  AVANCE REPORTE */*/*/*/*/*/*/*/*/

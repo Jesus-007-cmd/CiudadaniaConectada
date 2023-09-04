@@ -30,6 +30,11 @@ SECRET_KEY = 'django-insecure-_x+%80r0!sn&fv#i1n*a4kz$+$df2rd0ziaca-=*120cd^@x%y
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 
 # Application definition
@@ -46,6 +51,7 @@ INSTALLED_APPS = [
     'reportessolicitudes',
     'bootstrap4',
     'widget_tweaks',
+    'rest_framework',
     
 ]
 
