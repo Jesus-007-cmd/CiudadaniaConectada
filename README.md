@@ -531,7 +531,7 @@ Beneficios del Sistema
 [Regresar a tabla de contenido](#_tabladecontenido)
 
 <a name="_restapidescripcion"></a>
-**REST API de Django,**
+### REST API de Django
  
 Es una herramienta poderosa para crear el backend de una aplicación web. Django es un framework web de Python que proporciona muchas características útiles para desarrollar aplicaciones web, y la REST API de Django le permite exponer los datos y funcionalidades de su aplicación de manera estructurada y accesible a través de API RESTful.
 
@@ -555,7 +555,7 @@ En resumen, la REST API de Django es una excelente elección para crear el backe
 
 <a name="_restapirutas"></a>
 
-**RUTAS DE REST API de Django,**
+### RUTAS DE REST API de Django
 
 http://127.0.0.1:8000/reportessolicitudes/api/reportes-problema/
 
@@ -579,7 +579,7 @@ Es importante que para validar las rutas escribir la diagonal al final.
 
 
 <a name="_tabladecontenido"></a><a name="_tocmejoras"></a>
-Implementación de API DE GOOGLE MAPS para encontrar la ubicación del problema reportado
+### Implementación de API DE GOOGLE MAPS para encontrar la ubicación del problema reportado
 
 Como se puede observar en la siguiente imagen como mejora al sistema se implemento la ubicación via cordenas agregadas previamente por los usuarios en caso de querer agregarlas donde se encuentra el problema:
 ![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/a2486281-1751-47e1-9ec8-da38c810afee)
@@ -588,6 +588,6 @@ Como se puede observar en la siguiente imagen como mejora al sistema se implemen
 [Regresar a tabla de contenido](#_tabladecontenido)
 
 <a name="_tabladecontenido"></a><a name="_tocmejoras2"></a>
-Se realiza actualización de reportes por fecha, se agregan graficos con charjs y se separan los dos tipos de reportes de usuarios, en pendientes y finalizados:
+### Se realiza actualización de reportes por fecha, se agregan graficos con charjs y se separan los dos tipos de reportes de usuarios, en pendientes y finalizados:
 ![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/f08ec960-3335-4e15-a9a5-92cbdf6a4d2f)
 [Regresar a tabla de contenido](#_tabladecontenido)
