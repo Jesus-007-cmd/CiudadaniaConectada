@@ -47,6 +47,9 @@
 
 [Funcionario](#_toc144312472)
 
+[REST API Se implmenta RESTAPI DE DJANGO para backend, se realiza descipción y después rutas](#_restapidescripcion)
+[REST API Se detallan todas las rutas](#_restapirutas)
+
 [Nuevas mejoras al 31 de agosto del 2023](#_tocmejoras)
 [Implementación de API DE GOOGLE MAPS para encontrar la ubicación del problema reportado]
 [Nuevas mejoras al 2 de septiembreo del 2023 Uso de chartjs en reportes por fechas](#_tocmejoras2)
@@ -524,9 +527,43 @@ Beneficios del Sistema
 - Crea un canal de colaboración entre ciudadanos y funcionarios municipales.
 - Proporciona una plataforma tecnológica moderna que se adapta a las necesidades actuales.
 - En resumen, el Sistema de Comunicación Ciudadana y Gestión de Servicios Municipales es una solución integral que busca fortalecer la conexión entre el gobierno y los ciudadanos, promoviendo una gestión más ágil y transparente de los servicios municipales.
-
-
 [Regresar a tabla de contenido](#_tabladecontenido)
+
+<a name="_restapidescripcion"></a>
+**REST API de Django,**
+ 
+Es una herramienta poderosa para crear el backend de una aplicación web. Django es un framework web de Python que proporciona muchas características útiles para desarrollar aplicaciones web, y la REST API de Django le permite exponer los datos y funcionalidades de su aplicación de manera estructurada y accesible a través de API RESTful.
+
+Aquí hay algunas razones por las que la REST API de Django es una elección popular para desarrollar el backend de aplicaciones web:
+
+Facilita la creación de API RESTful: Django proporciona un conjunto de herramientas y bibliotecas que hacen que la creación de una API RESTful sea relativamente sencilla. Puede definir modelos de datos, serializadores y vistas para exponer sus datos y funcionalidades a través de API HTTP.
+
+Seguridad: Django incluye medidas de seguridad integradas, como protección contra ataques CSRF (Cross-Site Request Forgery) y XSS (Cross-Site Scripting). Esto ayuda a proteger su backend de vulnerabilidades comunes.
+
+Administración de datos: Django incluye una poderosa interfaz de administración que le permite gestionar sus datos de manera eficiente. Esto es útil tanto para el desarrollo como para la administración en producción.
+
+Escalabilidad: Puede escalar su aplicación desarrollada en Django para manejar grandes volúmenes de tráfico si es necesario. También puede utilizar herramientas de caché y bases de datos de alta disponibilidad para mejorar el rendimiento y la escalabilidad.
+
+Documentación y comunidad: Django tiene una comunidad activa y una amplia documentación, lo que facilita la resolución de problemas y la obtención de ayuda cuando sea necesario.
+
+Integración con otros componentes de Django: Puede integrar fácilmente su API REST con otros componentes de Django, como autenticación de usuarios, autenticación de tokens, formularios y más.
+
+En resumen, la REST API de Django es una excelente elección para crear el backend de su aplicación web debido a su facilidad de uso, seguridad, escalabilidad y la gran comunidad de desarrollo que lo respalda. Le permite construir una API RESTful sólida y segura que puede ser consumida por aplicaciones web, aplicaciones móviles y otros servicios.
+[Regresar a tabla de contenido](#_tabladecontenido)
+<a name="_restapirutas"></a>
+**RUTAS DE REST API de Django,**
+http://127.0.0.1:8000/reportessolicitudes/api/reportes-problema/
+http://127.0.0.1:8000/reportessolicitudes/api/reportes-problema/<int:pk>/
+http://127.0.0.1:8000/api/solicitudes-informacion/
+http://127.0.0.1:8000/api/solicitudes-informacion/<int:pk>/
+http://127.0.0.1:8000/api/avances-reporte/
+http://127.0.0.1:8000/api/avances-reporte/<int:pk>/
+http://127.0.0.1:8000/api/usuarios-funcionario/
+http://127.0.0.1:8000/api/usuarios-funcionario/<int:pk>/
+
+Es importante que para validar las rutas escribir la diagonal al final.
+[Regresar a tabla de contenido](#_tabladecontenido)
+
 
 <a name="_tabladecontenido"></a><a name="_tocmejoras"></a>
 Implementación de API DE GOOGLE MAPS para encontrar la ubicación del problema reportado
