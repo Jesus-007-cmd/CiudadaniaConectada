@@ -57,6 +57,8 @@
 
 23.-[Nuevas mejoras al 2 de septiembreo del 2023 Uso de chartjs en reportes por fechas](#_tocmejoras2)
 
+24.-[Nuevas mejoras al 5 de septiembreo del 2023 Se da la funcionalidad para editar y eliminar usuarios funcionarios](#_tocmejoras3)
+
 
 
 ##
@@ -597,3 +599,24 @@ Como se puede observar en la siguiente imagen como mejora al sistema se implemen
 se agregan graficos con charjs y se separan los dos tipos de reportes de usuarios, en pendientes y finalizados:
 ![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/f08ec960-3335-4e15-a9a5-92cbdf6a4d2f)
 [Regresar a tabla de contenido](#_tabladecontenido)
+
+<a name="_tabladecontenido"></a><a name="_tocmejoras3"></a>
+## Se realiza actualización de pantalla de admin para poder eliminar y editar funcionarios
+Esto es dentro de la misma lista de funcionarios:
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/13383d6d-431d-49de-bd5b-c8d22c484456)
+
+Para el boton de eliminar se crea un nuevo template para edición:
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/62013c22-e8d8-471f-a3e3-241be8c8b2e2)
+
+Para futuras mejoras:
+
+
+se detecto que solo se borra la relación de datos del funcionario de la tabla usuariofuncionario sin embargo de la tabla user no se elimina, hay que eliminar ambos.
+
+Dentro de la plantilla para editar funcionario se detecto que solamente la fotografía no se edita, por lo que como futura mejora sería corregirlo para que cuenta con esa funcionalidad.
+
+[Regresar a tabla de contenido](#_tabladecontenido)
+
+
+
+
