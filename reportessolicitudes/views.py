@@ -1,7 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin  # Importar el mixin necesario
-from .forms import ReporteForm, SolicitudForm, AvanceReporteForm, AvanceSolicitudForm, FuncionarioCreationForm
+from .forms import (ReporteForm, 
+                    SolicitudForm, 
+                    AvanceReporteForm, 
+                    AvanceSolicitudForm, 
+                    FuncionarioCreationForm, 
+                    FuncionarioEditForm  
+                    )
 
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -227,9 +233,8 @@ def reportes_por_categoria_estatus(request):
 #-------------------------------------------------------------------------------------
 
 
-
-
-
+#---------------Aqui inician las vistas de administradores, solo son 2:---------------------
+#-------------------------------------------------------------------------------------
 @login_required
 def admin_home(request):
     template_name = 'admins/admin_home.html'
@@ -238,24 +243,56 @@ def admin_home(request):
         form = FuncionarioCreationForm(request.POST, request.FILES)
         if form.is_valid():
             try:
-                user = form.save()  # Guarda el usuario
-                
-                #funcionario.save()  # Guarda el registro de UsuarioFuncionario
+                user = form.save()
                 messages.success(request, 'Usuario funcionario creado exitosamente')
                 
-                print(user.id)
-                return redirect('admin_home')  # Redirige nuevamente a la página de administrador
+                return redirect('admin_home')
             except Exception as e:
                 messages.error(request, f'Error al crear usuario funcionario: {str(e)}')
+                
                 print("Error:", e)
-
     else:
         form = FuncionarioCreationForm()
     
+    # Manejo de eliminación de funcionarios
+    if request.method == 'POST' and 'eliminar_funcionario' in request.POST:
+        funcionario_id = request.POST['eliminar_funcionario']
+        try:
+            usuario_funcionario = UsuarioFuncionario.objects.get(id=funcionario_id)
+            usuario_funcionario.delete()
+            messages.success(request, 'Usuario funcionario eliminado exitosamente')
+        except UsuarioFuncionario.DoesNotExist:
+            messages.error(request, 'El usuario funcionario no existe')
     
-    funcionarios = UsuarioFuncionario.objects.all()  # Obtén la lista de funcionarios existentes
+    # Manejo de edición de funcionarios
+    if request.method == 'POST' and 'editar_funcionario' in request.POST:
+        funcionario_id = request.POST['editar_funcionario']
+        usuario_funcionario = UsuarioFuncionario.objects.get(id=funcionario_id)
+        # Aquí puedes agregar la lógica para cargar el formulario de edición
+        
+        # Una vez que se haya editado el funcionario, puedes guardar los cambios
+        
+    funcionarios = UsuarioFuncionario.objects.all()
     
     return render(request, template_name, {'form': form, 'funcionarios': funcionarios})
+
+
+@login_required
+def editar_funcionario(request, funcionario_id):
+    funcionario = UsuarioFuncionario.objects.get(id=funcionario_id)
+
+    if request.method == 'POST':
+        form = FuncionarioEditForm(request.POST, request.FILES, instance=funcionario)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_home')
+    else:
+        form = FuncionarioEditForm(instance=funcionario)
+
+    return render(request, 'admins/editar_funcionario.html', {'form': form, 'funcionario': funcionario})
+
+
+#---------------Aqui finalizan las vistas de administradores, solo son 2:---------------------
 
 """Se crean las vistas basadas  en clases para los modelos serializadas """
 class ReporteProblemaListView(generics.ListCreateAPIView):

@@ -19,7 +19,7 @@ urlpatterns = [
     path('register/', views.register , name='register'),
     path('iniciarsesionfuncionario/',  views.login_funcionario_view , name='iniciarsesionfuncionario'),
     path('iniciarsesionadmin/', views.admin_login , name='iniciarsesionadmin'),
-    
+ 
 ]
 
 if settings.DEBUG:

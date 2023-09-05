@@ -76,14 +76,38 @@ class FuncionarioCreationForm(UserCreationForm):
             user.is_staff = True  # Asegura que el usuario creado sea un staff
             user.save()
             funcionario = UsuarioFuncionario.objects.create(
-                
+                id_funcionario=user,
                 cargo=self.cleaned_data['cargo'],
                 departamento=self.cleaned_data['departamento'],
                 telefono_contacto=self.cleaned_data['telefono_contacto'],
                 horario_trabajo=self.cleaned_data['horario_trabajo'],
                 especialidad=self.cleaned_data['especialidad'],
                 foto_perfil=self.cleaned_data['foto_perfil'],
-                id_funcionario=user.id
+                
                 
             )
         return user
+    
+class FuncionarioEditForm(forms.ModelForm):
+    class Meta:
+        model = UsuarioFuncionario
+        fields = [
+            'cargo',
+            'departamento',
+            'telefono_contacto',
+            'horario_trabajo',
+            'especialidad',
+            'foto_perfil',
+        ]
+
+    def save(self, commit=True):
+        funcionario = super().save(commit=False)
+
+        # Elimina la foto existente si se proporciona una nueva imagen
+        if 'foto_perfil' in self.changed_data:
+            funcionario.foto_perfil.delete(save=False)
+
+        if commit:
+            funcionario.save()
+
+        return funcionario

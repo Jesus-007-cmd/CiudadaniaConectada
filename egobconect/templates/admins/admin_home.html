@@ -76,8 +76,7 @@
                 </div>
             </div>
             <div style="text-align: center; padding-top: 30px;">
-                <input class="btn btn-primary" type="submit" value="Crear Usuario Funcionario"
->
+                <input class="btn btn-primary" type="submit" value="Crear Usuario Funcionario">
             </div>
         </form>
 
@@ -97,6 +96,7 @@
                     <th>Horario de Trabajo</th>
                     <th>Especialidad</th>
                     <th>Foto de Perfil</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -116,7 +116,23 @@
                     <td>{{ funcionario.telefono_contacto }}</td>
                     <td>{{ funcionario.horario_trabajo }}</td>
                     <td>{{ funcionario.especialidad }}</td>
-                    <td><img src="{{ funcionario.foto_perfil.url }}" alt="Foto de perfil" width="50"></td>
+                    <td>
+                        {% if  funcionario.foto_perfil %}                        
+                        <img src="{{ funcionario.foto_perfil.url }}" alt="Foto de perfil" width="50"></td>
+                        {% else %}                        
+                        Sin foto de perfil
+                        {% endif %}                        
+                    <td>
+                        <!-- Agregamos botones de Eliminar y Editar para cada funcionario -->
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="eliminar_funcionario" value="{{ funcionario.id }}">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                        <form method="post" action="{% url 'editar_funcionario' funcionario.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                        </form>
                 </tr>
 
 

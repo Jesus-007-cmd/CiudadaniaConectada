@@ -36,7 +36,7 @@ urlpatterns = [
     path('reportes/categoria-estatus/', views.reportes_por_categoria_estatus, name='reportes_por_categoria_estatus'),
     #Ruta para admin
     path('admin_home/', views.admin_home, name='admin_home'),
-    
+    path('editar-funcionario/<int:funcionario_id>/', views.editar_funcionario, name='editar_funcionario'),
     #Rutas serialización
     path('api/reportes-problema/', ReporteProblemaListView.as_view(), name='reportes-problema-lista'),
     path('api/reportes-problema/<int:pk>/', ReporteProblemaDetailView.as_view(), name='reporte-problema-detalle'),

@@ -10,6 +10,7 @@ from .forms import RegistroCiudadanoForm, AdminLoginForm
 from django.urls import reverse   
 
 def index(request):
+    custom_logout(request)
     return render(request, 'inicio.html')
 
 
@@ -83,7 +84,7 @@ def login_funcionario_view(request):
     
     return render(request, template_name)
 
-# Aqui empieza de adminsitrador:
+# Aqui empieza de administrador:
 def admin_login(request):
     template_name = 'iniciar_sesion_admin.html'
     
