@@ -1,5 +1,6 @@
 
-![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/6babed15-c274-4901-8863-e9ca6c5ce544)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/05124547-5be6-47b1-8f0f-a72fe4b17dfb)
+
 
 ![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/17c1a8d1-3162-46ff-864d-08a7804114ad)
 
