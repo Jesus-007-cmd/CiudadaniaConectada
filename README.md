@@ -32,6 +32,8 @@
 
 11.-[Modelos, descripción y relaciones de base de datos](#_toc144312464)
 
+12.-[Diagrama de Flujo del sistema](#_tocdiagrama_deflujo)
+
 12.-[Descripción de las tablas](#_toc144312465)
 
 13.-[Diagrama de modelos o base de datos](#_toc144312466)
@@ -62,9 +64,6 @@
 
 
 ##
-
-
-
 
 
 
@@ -156,6 +155,13 @@ La ubicación del proyecto se encuentra en la siguiente dirección:
 <https://github.com/Jesus-007-cmd/CiudadaniaConectada>
 
 [Regresar a tabla de contenido](#_tabladecontenido)
+
+## <a name="_tocdiagrama_deflujo"></a>**Diagrama de Flujo del sistema**  
+A continuación se detalla el diagrama de flujo del sistema web:
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/3cb27e3b-5aa0-4d7e-8215-257ae4daa9cf)
+
+
+
 
 ## <a name="_toc144312464"></a>**Modelos, descripción y relaciones de base de datos**
 ### <a name="_toc144312465"></a>Descripción de las tablas
