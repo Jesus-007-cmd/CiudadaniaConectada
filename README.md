@@ -158,7 +158,8 @@ La ubicación del proyecto se encuentra en la siguiente dirección:
 
 ## <a name="_tocdiagrama_deflujo"></a>**Diagrama de Flujo del sistema**  
 A continuación se detalla el diagrama de flujo del sistema web:
-![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/3cb27e3b-5aa0-4d7e-8215-257ae4daa9cf)
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/915b4c95-4e97-4e92-b3a3-ff6896184043)
+
 
 
 
