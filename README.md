@@ -167,6 +167,8 @@ A continuación se detalla el diagrama de flujo del sistema web:
 A continuación se detalla el diagrama de casos de uso del sistema:
 ![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/80933c46-f924-4284-aead-54b918506de9)
 
+[Regresar a tabla de contenido](#_tabladecontenido)
+
 
 
 ## <a name="_toc144312464"></a>**Modelos, descripción y relaciones de base de datos**
