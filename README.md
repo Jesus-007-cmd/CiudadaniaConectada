@@ -30,9 +30,11 @@
 
 10.-[Ubicación en git-hub](#_toc144312463)
 
-11.-[Modelos, descripción y relaciones de base de datos](#_toc144312464)
+11.-[Diagrama de Flujo del sistema](#_tocdiagrama_deflujo)
 
-12.-[Diagrama de Flujo del sistema](#_tocdiagrama_deflujo)
+11.-[Diagrama de casos de uso del sistema](#_tocdiagrama_de_casos_de_uso)
+
+12.-[Modelos, descripción y relaciones de base de datos](#_toc144312464)
 
 12.-[Descripción de las tablas](#_toc144312465)
 
@@ -161,6 +163,9 @@ A continuación se detalla el diagrama de flujo del sistema web:
 ![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/915b4c95-4e97-4e92-b3a3-ff6896184043)
 
 
+## <a name="_tocdiagrama_de_casos_de_uso"></a>**Diagrama de Casos de uso del sistema**  
+A continuación se detalla el diagrama de casos de uso del sistema:
+![image](https://github.com/Jesus-007-cmd/CiudadaniaConectada/assets/118942603/80933c46-f924-4284-aead-54b918506de9)
 
 
 
